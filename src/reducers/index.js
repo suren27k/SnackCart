@@ -70,7 +70,7 @@ const mainReducer = (state, action) =>
 
 		}
 		default: {
-			console.log("default case in main reducer");
+			// console.log("default case in main reducer");
 
 			return state;
 		}

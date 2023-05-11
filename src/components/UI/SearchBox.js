@@ -32,7 +32,7 @@ const SearchBox = () =>
 			<form onSubmit={handleSearch}>
 				<input name="search" type="text"
 					id="search"
-					placeholder="Enter product name, category"
+					placeholder="Enter product name or category"
 					value={search}
 					onChange={handleSearchInput}
 				/>
