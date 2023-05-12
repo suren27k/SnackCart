@@ -1,12 +1,20 @@
-import Cart from "../Products/Cart/Cart"
-import SearchBox from "../UI/SearchBox"
+import { NavLink, useNavigate } from "react-router-dom";
+import Cart from "../Products/Cart/Cart";
+import SearchBox from "../UI/SearchBox";
 
 const Header = () =>
 {
+	const navigate = useNavigate();
+
+	const loginAction = () =>
+	{
+		navigate("/login");
+	}
+
 	return (
 		<header>
 			<div className="nav-brand">
-				<a to="/">
+				<NavLink to={"/"}>
 					<span>SnackCart</span>
 					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart" width="30"
 						height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round"
@@ -17,7 +25,7 @@ const Header = () =>
 						<path d="M17 17h-11v-14h-2" />
 						<path d="M6 5l14 1l-1 7h-13" />
 					</svg>
-				</a>
+				</NavLink>
 			</div>
 			<div className="searchBox-container">
 				<SearchBox />
@@ -25,6 +33,7 @@ const Header = () =>
 			<div className="cart-container">
 				<Cart />
 			</div>
+			<button className="login-btn" onClick={loginAction}>Login</button>
 		</header >
 	)
 }
