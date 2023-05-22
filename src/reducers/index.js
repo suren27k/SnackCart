@@ -1,4 +1,7 @@
-const mainReducer = (state, action) =>
+import { combineReducers } from "redux";
+import authReducer from "./authReducer";
+
+const mainReducer = (state = { items: [], totalAmount: 0 }, action) =>
 {
 	const { type, payload } = action;	// send item in payload
 
@@ -77,4 +80,7 @@ const mainReducer = (state, action) =>
 	}
 }
 
-export default mainReducer
+export default combineReducers({
+	cart: mainReducer,
+	auth: authReducer
+})

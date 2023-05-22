@@ -7,7 +7,7 @@ import Modal from "../../UI/Modal";
 const ListItem = ({ data }) =>
 {
 	const [showModal, setShowModal] = useState(false);
-	const item = useSelector(state => state.items.find(item => item.id === data.id));
+	const item = useSelector(state => state.cart.items.find(item => item.id === data.id));
 	const dispatcher = useDispatch();
 
 	const increaseCounterByOne = (event) =>

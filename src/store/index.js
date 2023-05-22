@@ -6,10 +6,7 @@ import mainReducer from "../reducers";
 
 const store = createStore(
 	mainReducer,
-	{
-		items: [],
-		totalAmount: 0
-	},
+	{},
 	composeWithDevTools(applyMiddleware(thunk)))
 
 export default store;

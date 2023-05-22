@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Subheader from "../Layout/Subheader";
 import Loader from "../UI/Loader";
 import ListItem from "./ListItems/ListItem";
 
@@ -80,6 +81,7 @@ const Products = () =>
 
 	return (
 		<>
+			<Subheader />
 			<div className={"product-list"}>
 				<div className={"product-list--wrapper"}>
 					{items.map((item) =>

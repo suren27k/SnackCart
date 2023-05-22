@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemHandler, clearCartHandler, removeItemHandler } from "../../../action";
+import { addItemHandler, clearCartHandler, placeOrderRequest, removeItemHandler } from "../../../action";
 import Modal from "../../UI/Modal";
 import OrderStatus from "../../UI/OrderStatus";
 import CartItem from "./CartItem";
@@ -9,9 +9,10 @@ const Cart = () =>
 {
 	const [showModal, setShowModal] = useState(false);
 	const [showOrderStatusModal, setShowOrderStatusModal] = useState(false);
-	const cartItems = useSelector(state => state.items);
-	const totalAmount = useSelector(state => state.totalAmount);
+	const cartItems = useSelector(state => state.cart.items);
+	const totalAmount = useSelector(state => state.cart.totalAmount);
 	const dispatcher = useDispatch();
+	const [orderId, setOrderId] = useState("");
 
 	const handleModalClick = () =>
 	{
@@ -29,6 +30,42 @@ const Cart = () =>
 	{
 		dispatcher(clearCartHandler());
 		handleOrderStatusModal();
+	}
+
+	const handleOrderWithRequest = () =>
+	{
+		console.log("handleOrderWithRequest called")
+		// dispatcher(clearCartHandler());
+		dispatcher(placeOrderRequest(response =>
+		{
+			//callback function
+
+			// console.log("1-->"); console.log(response);
+			// console.log("2-->"); console.log(response.data);
+			// console.log("3-->"); console.log(response.data.name);
+
+
+			if (!response.error)
+			{
+				console.log("No response error")
+				try
+				{
+
+					setOrderId(response.data.name);
+				}
+				catch (error)
+				{
+					console.log(error)
+				}
+				handleOrderStatusModal();
+			}
+			else
+			{
+				console.log("Yes response error")
+				alert(response.data.error || "Some generic msg incase key missing");
+			}
+
+		}));
 	}
 
 	const dispatchToStore = (item, type,) =>
@@ -61,7 +98,7 @@ const Cart = () =>
 				showModal &&
 				<Modal onClose={handleModalClick}>
 					<div className="checkout-modal">
-						<h2>Checkout Modal</h2>
+						<h2>Your Cart</h2>
 						<div className="checkout-modal_list">
 							{cartItems.length === 0 ? (
 								<h3 className="empty-cart">Your cart is empty : /</h3>
@@ -80,7 +117,7 @@ const Cart = () =>
 									<h4>Total Amount</h4>
 									<h4>₹ {totalAmount} </h4>
 								</div>
-								<button onClick={handleOrder}>Order Now</button>
+								<button onClick={handleOrderWithRequest}>Order Now</button>
 							</div>
 						}
 
@@ -89,7 +126,7 @@ const Cart = () =>
 			}
 			{
 				showOrderStatusModal &&
-				<OrderStatus onClose={handleOrderStatusModal}></OrderStatus>
+				<OrderStatus orderId={orderId} onClose={handleOrderStatusModal}></OrderStatus>
 			}
 		</>
 	);

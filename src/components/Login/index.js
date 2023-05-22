@@ -1,17 +1,22 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import { loginWithEmailAndPasswordHandler, signUpWithEmailPasswordHandler } from "../../action/auth";
 import Loader from "../UI/Loader";
 
 const Login = () =>
 {
 	const params = useParams();
 	const location = useLocation();
-	const [loader, setLoader] = useState(false);
+	const [showLoader, setShowLoader] = useState(false);
+	const [errorMessage, setErrorMessage] = useState(false);
+	const [showErrorMsg, setShowErrorMsg] = useState(false);
 	const navigate = useNavigate();
 	const [loginData, setLoginData] = useState({
 		email: "",
 		password: ""
 	});
+	const dispatcher = useDispatch();
 
 	// console.table("loc1:" + location);
 	// Object.entries(location)
@@ -41,7 +46,7 @@ const Login = () =>
 		if (validPaths.includes(location.pathname))
 		{
 
-			console.log("valid param!");
+			// console.log("valid param!");
 			// navigate(location.pathname);
 			setPageData();
 		}
@@ -60,6 +65,58 @@ const Login = () =>
 	{
 		e.preventDefault();
 		console.log(loginData)
+		if (location.pathname === "/signup")
+		{
+			setShowErrorMsg(false);
+			setShowLoader(true);
+			dispatcher(signUpWithEmailPasswordHandler(loginData, (response) =>
+			{
+				//this function will be executed in auth.js when callback() is called.
+				//For now, it is being passed to auth.js, not executed.
+
+
+				if (response.error)
+				{
+					console.log("error: " + response.error);
+					setErrorMessage(response.response.data.error.message);
+					setShowErrorMsg(true);
+				}
+				else
+				{
+					console.log("SignUp success!");
+					navigate("/", { replace: true });	//replaces existing url instead of adding a new one.
+				}
+
+				setShowLoader(false);
+
+			}));
+		}
+		else if (location.pathname === "/login")
+		{
+			setShowErrorMsg(false);
+			setShowLoader(true);
+			dispatcher(loginWithEmailAndPasswordHandler(loginData, (response) =>
+			{
+				//this function will be executed in auth.js when callback() is called.
+				//For now, it is being passed to auth.js, not executed.
+
+
+				if (response.error)
+				{
+					console.log("error: " + response.error);
+					setErrorMessage(response.response.data.error.message);
+					setShowErrorMsg(true);
+				}
+				else
+				{
+					console.log("Login success!");
+					navigate("/", { replace: true });	//replaces existing url instead of adding a new one.
+				}
+
+				setShowLoader(false);
+
+			}));
+		}
 	}
 
 	const handleInput = (e) =>
@@ -100,6 +157,7 @@ const Login = () =>
 								onChange={handleInput}
 							/>
 						</div>
+						{showErrorMsg && <p style={{ color: "red", fontSize: "11px" }}>{errorMessage}</p>}
 						<div className="button-wrap">
 							<button className="login-btn">
 								{buttonText}
@@ -108,7 +166,7 @@ const Login = () =>
 					</form>
 				</div>
 			</div>
-			{loader && <Loader />}
+			{showLoader && <Loader />}
 		</>
 	)
 

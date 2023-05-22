@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
-import Login from "./";
+import Login from ".";
 
 
 const LoginWrapper = () =>
