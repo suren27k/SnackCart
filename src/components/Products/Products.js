@@ -28,13 +28,13 @@ const Products = () =>
 		{
 			try
 			{
-				let slug = `items.json`;
+				let slug = `test/sale.json`;
 
 				// console.log("params:" + JSON.stringify(params));
 
 				if (params.category)
 				{
-					slug = `items-${params.category}.json`;
+					slug = `test/${params.category}.json`;
 				}
 
 				if (searchQueryParams)

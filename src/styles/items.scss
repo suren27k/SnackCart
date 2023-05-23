@@ -27,7 +27,7 @@
 
 		.title {
 			text-overflow: ellipsis;
-			font-size: 14px;
+			font-size: 16px;
 			color: rgba($color: $black, $alpha: 0.8);
 			white-space: nowrap;
 			overflow-x: hidden;
@@ -70,14 +70,28 @@
 }
 
 .pricing {
+	display: flex;
+	align-items: center;
 	small {
 		opacity: 0.5;
 		font-weight: 400;
-		margin-left: 8px;
+		margin-left: 14px;
 	}
 	span {
-		font-size: 14px;
+		font-size: 16px;
 		font-weight: 500;
+	}
+}
+.item-top-row {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.item-description {
+	display: flex;
+	justify-content: center;
+	p {
+		font-size: 14px;
 	}
 }
 

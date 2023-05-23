@@ -5,11 +5,12 @@ const Subheader = () =>
     return (
         <div className="subheader-container">
             <ul>
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="category/category-1">Category 1</NavLink></li>
-                <li><NavLink to="category/category-2">Category 2</NavLink></li>
-                <li><NavLink to="category/category-3">Category 3</NavLink></li>
-                <li><NavLink to="category/category-4">Category 4</NavLink></li>
+                <li><NavLink to="/">On Sale!!</NavLink></li>
+                <li><NavLink to="category/fruits">Fruits</NavLink></li>
+                <li><NavLink to="category/cookies">Cookies</NavLink></li>
+                <li><NavLink to="category/crisps">Crisps</NavLink></li>
+                <li><NavLink to="category/desserts">Desserts</NavLink></li>
+                <li><NavLink to="category/beverages">Beverages</NavLink></li>
             </ul>
         </div>
     )

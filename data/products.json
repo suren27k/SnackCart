@@ -1,0 +1,295 @@
+{
+	"test": {
+		"sale": [
+			{
+				"description": "Oreos!!",
+				"discountedPrice": 50,
+				"price": 55,
+				"thumbnail": "cookies/oreo.jpg",
+				"category": "cookies",
+				"id": 2,
+				"title": "Oreo Cookies 100gm"
+			},
+			{
+				"description": "Tangy crisps!!",
+				"discountedPrice": 40,
+				"price": 45,
+				"thumbnail": "crisps/curly.jpg",
+				"category": "crisps",
+				"id": 61,
+				"title": "Curly crisps 100gm"
+			},
+			{
+				"description": "Tasty home made butter cookies!",
+				"discountedPrice": 70,
+				"price": 75,
+				"thumbnail": "cookies/butter.jpg",
+				"category": "cookies",
+				"id": 1,
+				"title": "Butter Cookies 250gm"
+			},
+			{
+				"description": "Healthy juice set of 3 bottles!",
+				"discountedPrice": 350,
+				"price": 400,
+				"thumbnail": "juice/multi.jpg",
+				"category": "beverages",
+				"id": 12,
+				"title": "Healthy 3 pack 250ml"
+			},
+			{
+				"description": "Healthy juice!",
+				"discountedPrice": 140,
+				"price": 165,
+				"thumbnail": "juice/mixed.jpg",
+				"category": "beverages",
+				"id": 11,
+				"title": "Mixed Healthy 250ml"
+			},
+			{
+				"description": "Fresh green grapes",
+				"discountedPrice": 340,
+				"price": 450,
+				"thumbnail": "fruits/grapes.jpg",
+				"category": "fruits",
+				"id": 24,
+				"title": "Grapes 100gm"
+			},
+			{
+				"description": "This is sweet cherry and is very tasty",
+				"discountedPrice": 45,
+				"price": 60,
+				"thumbnail": "fruits/cherry.jpg",
+				"category": "fruits",
+				"id": 23,
+				"title": "Cherry 100gm"
+			},
+			{
+				"description": "Fresh Pomegranate",
+				"discountedPrice": 180,
+				"price": 185,
+				"thumbnail": "fruits/pomegranate.jpg",
+				"category": "fruits",
+				"id": 31,
+				"title": "Pomogranate 500gm"
+			}
+		],
+		"fruits": [
+			{
+				"description": "Tasty apples!",
+				"discountedPrice": 280,
+				"price": 290,
+				"thumbnail": "fruits/apple.jpg",
+				"category": "fruits",
+				"id": 21,
+				"title": "Apples 500gm"
+			},
+			{
+				"description": "This is banana and is very tasty",
+				"discountedPrice": 12,
+				"price": 15,
+				"thumbnail": "fruits/banana.jpg",
+				"category": "fruits",
+				"id": 22,
+				"title": "Banana"
+			},
+			{
+				"description": "This is sweet cherry and is very tasty",
+				"discountedPrice": 45,
+				"price": 60,
+				"thumbnail": "fruits/cherry.jpg",
+				"category": "fruits",
+				"id": 23,
+				"title": "Cherry 100gm"
+			},
+			{
+				"description": "Fresh green grapes",
+				"discountedPrice": 340,
+				"price": 450,
+				"thumbnail": "fruits/grapes.jpg",
+				"category": "fruits",
+				"id": 24,
+				"title": "Grapes 100gm"
+			},
+			{
+				"description": "Great for lemonade!",
+				"discountedPrice": 8,
+				"price": 10,
+				"thumbnail": "fruits/lemon.jpg",
+				"category": "fruits",
+				"id": 25,
+				"title": "Lemon"
+			},
+			{
+				"description": "Juicy Mangoes!!",
+				"discountedPrice": 28,
+				"price": 33,
+				"thumbnail": "fruits/mango.jpg",
+				"category": "fruits",
+				"id": 26,
+				"title": "Mango"
+			},
+			{
+				"description": "Tangy oranges!",
+				"discountedPrice": 280,
+				"price": 290,
+				"thumbnail": "fruits/orange.jpg",
+				"category": "fruits",
+				"id": 27,
+				"title": "Oranges 500gm"
+			},
+			{
+				"description": "Sweet sweet peaches!",
+				"discountedPrice": 450,
+				"price": 500,
+				"thumbnail": "fruits/peach.jpg",
+				"category": "fruits",
+				"id": 28,
+				"title": "Peaches 500gm"
+			},
+			{
+				"description": "Pears!!",
+				"discountedPrice": 60,
+				"price": 67,
+				"thumbnail": "fruits/pear.jpg",
+				"category": "fruits",
+				"id": 29,
+				"title": "Pear"
+			},
+			{
+				"description": "Fresh Pineapples",
+				"discountedPrice": 90,
+				"price": 102,
+				"thumbnail": "fruits/pineapple.jpg",
+				"category": "fruits",
+				"id": 30,
+				"title": "Pineapple"
+			},
+			{
+				"description": "Fresh Pomegranate",
+				"discountedPrice": 180,
+				"price": 185,
+				"thumbnail": "fruits/pomegranate.jpg",
+				"category": "fruits",
+				"id": 31,
+				"title": "Pomogranate 500gm"
+			}
+		],
+		"cookies": [
+			{
+				"description": "Tasty home made butter cookies!",
+				"discountedPrice": 70,
+				"price": 75,
+				"thumbnail": "cookies/butter.jpg",
+				"category": "cookies",
+				"id": 1,
+				"title": "Butter Cookies 250gm"
+			},
+			{
+				"description": "Oreos!!",
+				"discountedPrice": 50,
+				"price": 55,
+				"thumbnail": "cookies/oreo.jpg",
+				"category": "cookies",
+				"id": 2,
+				"title": "Oreo Cookies 100gm"
+			}
+		],
+		"crisps": [
+			{
+				"description": "Tangy crisps!!",
+				"discountedPrice": 40,
+				"price": 45,
+				"thumbnail": "crisps/curly.jpg",
+				"category": "crisps",
+				"id": 61,
+				"title": "Curly crisps 100gm"
+			},
+			{
+				"description": "Salty crisps!",
+				"discountedPrice": 50,
+				"price": 55,
+				"thumbnail": "crisps/salt.jpg",
+				"category": "crisps",
+				"id": 62,
+				"title": "Salty Crisps 200gm"
+			},
+			{
+				"description": "Spicy crisps!",
+				"discountedPrice": 50,
+				"price": 55,
+				"thumbnail": "crisps/spicy.jpg",
+				"category": "crisps",
+				"id": 63,
+				"title": "Spicy Crisps 200gm"
+			}
+		],
+		"desserts": [
+			{
+				"description": "Chocolate cup cakes!!",
+				"discountedPrice": 340,
+				"price": 450,
+				"thumbnail": "desserts/cupcakes.jpg",
+				"category": "desserts",
+				"id": 41,
+				"title": "Cupcakes pack of 4"
+			},
+			{
+				"description": "Jiggly homemade jelly!",
+				"discountedPrice": 40,
+				"price": 50,
+				"thumbnail": "desserts/jelly.jpg",
+				"category": "desserts",
+				"id": 43,
+				"title": "Jelly"
+			},
+			{
+				"description": "Home made ice cream!",
+				"discountedPrice": 60,
+				"price": 65,
+				"thumbnail": "desserts/icecream.jpg",
+				"category": "desserts",
+				"id": 42,
+				"title": "Ice Cream"
+			}
+		],
+		"beverages": [
+			{
+				"description": "Healthy juice!",
+				"discountedPrice": 140,
+				"price": 165,
+				"thumbnail": "juice/mixed.jpg",
+				"category": "beverages",
+				"id": 11,
+				"title": "Mixed Healthy 250ml"
+			},
+			{
+				"description": "Healthy juice set of 3 bottles!",
+				"discountedPrice": 350,
+				"price": 400,
+				"thumbnail": "juice/multi.jpg",
+				"category": "beverages",
+				"id": 12,
+				"title": "Healthy 3 pack 250ml"
+			},
+			{
+				"description": "Healthy orange juice!",
+				"discountedPrice": 350,
+				"price": 400,
+				"thumbnail": "juice/orange.jpg",
+				"category": "beverages",
+				"id": 13,
+				"title": "Orange Juice 250ml"
+			},
+			{
+				"description": "Healthy pomegranate juice!",
+				"discountedPrice": 150,
+				"price": 160,
+				"thumbnail": "juice/pomegranate.jpg",
+				"category": "beverages",
+				"id": 14,
+				"title": "Pomegranate Juice 250ml"
+			}
+		]
+	}
+}
