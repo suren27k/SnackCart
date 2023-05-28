@@ -77,13 +77,25 @@ const ListItem = ({ data }) =>
 							<img className={"img-fluid"} src={`/assets/${data.thumbnail}`} alt={data.title} />
 						</div>
 						<div className="meta">
-							<h3>{data.title}</h3>
-							<div className="pricing">
-								<span>₹{data.discountedPrice}</span>
-								<small>
-									<strike>₹{data.price}</strike>
-								</small>
-								<p>{data.description}</p>
+							<div className={"modal__information"}>
+								<div className="modal-top-row">
+
+									<div className={"title"}>
+										<h3>{data.title}</h3>
+									</div>
+									<div className={"pricing"}>
+										<span>₹{data.discountedPrice}</span>
+										<small>
+											<strike>₹{data.price}</strike>
+										</small>
+									</div>
+								</div>
+
+								<div className={"modal-description"}>
+									<p>{data.description}</p>
+								</div>
+							</div>
+							<div className="modal-cart-button">
 								{
 									!item || item?.quantity < 1 ? (
 										<button className={"cart-add card-add__modal"} onClick={increaseCounterByOne}>
@@ -91,7 +103,7 @@ const ListItem = ({ data }) =>
 											<img src={AddToCartIcon} alt="Cart Icon" />
 										</button>
 									) : (
-										<div className="cart-addon card-addon__modal">
+										<div className="card-addon card-addon__modal">
 											<button onClick={decreaseCounterByOne}>
 												<span>-</span>
 											</button>

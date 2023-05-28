@@ -34,7 +34,7 @@ const Cart = () =>
 
 	const handleOrderWithRequest = () =>
 	{
-		console.log("handleOrderWithRequest called")
+		// console.log("handleOrderWithRequest called")
 		// dispatcher(clearCartHandler());
 		dispatcher(placeOrderRequest(response =>
 		{
@@ -47,7 +47,7 @@ const Cart = () =>
 
 			if (!response.error)
 			{
-				console.log("No response error")
+				// console.log("No response error")
 				try
 				{
 
@@ -61,8 +61,9 @@ const Cart = () =>
 			}
 			else
 			{
-				console.log("Yes response error")
+				// console.log("Yes response error")
 				alert(response.data.error || "Some generic msg incase key missing");
+				setShowModal(false);
 			}
 
 		}));

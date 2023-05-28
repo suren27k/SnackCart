@@ -6,7 +6,7 @@ const CartItem = ({ cartItem, onAddItem, onRemoveItem }) =>
 			<img className="img-fluid" src={`/assets/${cartItem.thumbnail}`} alt={cartItem.title} />
 		</div>
 		<div className="information">
-			<div>
+			<div className="item-info">
 				<h4>{cartItem.title}</h4>
 				<div className="pricing">
 					<span>₹ {cartItem.discountedPrice}</span>
