@@ -11,38 +11,43 @@ import Profile from "./components/UserProfiles/Profile";
 
 const App = () =>
 {
-  const dispatcher = useDispatch();
-  const authState = useSelector(state => state.auth);
+	const dispatcher = useDispatch();
+	const authState = useSelector(state => state.auth);
 
-  useEffect(() =>
-  {
-    dispatcher(checkIfLoggedIn(() => { }))
-  }, []);
+	useEffect(() =>
+	{
+		console.log("checking if logged in inside useEffect of app.js")
+		dispatcher(checkIfLoggedIn((resp) =>
+		{
+			console.log("inside callback");
+			console.log(resp);
+		}))
+	}, []);
 
-  return (
-    <div>
-      <Header />
-      <Routes>
-        {
-          !authState.idToken &&
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Login />} />
-          </>
-        }
+	return (
+		<div>
+			<Header />
+			<Routes>
+				{
+					!authState.idToken &&
+					<>
+						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Login />} />
+					</>
+				}
 
-        <Route path="/" element={<Products />}>
-          <Route path="category/:category" element={<Products />} />
-        </Route>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/404" element={<Error404 />} />
-        <Route
-          path="*"
-          element={<Navigate to="/" replace />}
-        />
-      </Routes>
-    </div>
-  );
+				<Route path="/" element={<Products />}>
+					<Route path="category/:category" element={<Products />} />
+				</Route>
+				<Route path="/profile" element={<Profile />} />
+				<Route path="/404" element={<Error404 />} />
+				<Route
+					path="*"
+					element={<Navigate to="/" replace />}
+				/>
+			</Routes>
+		</div>
+	);
 }
 
 export default App;

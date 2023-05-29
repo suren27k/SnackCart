@@ -57,6 +57,7 @@ export const loginWithEmailAndPasswordHandler = (loginData, callback) =>
 				payload: response.data
 			});
 			localStorage.setItem("token", response.data.idToken);
+			localStorage.setItem("localId", response.data.localId);
 			return callback(response.data);
 
 		}
@@ -76,6 +77,7 @@ export const loginWithEmailAndPasswordHandler = (loginData, callback) =>
 //use token from previous login and send a login request again to keep user logged in.
 export const checkIfLoggedIn = (callback) =>
 {
+	console.log("inside checkIfLoggedIn")
 	return async (dispatch) =>
 	{
 		try

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemHandler, clearCartHandler, placeOrderRequest, removeItemHandler } from "../../../action";
+import { addItemHandler, placeOrderRequest, removeItemHandler } from "../../../action";
 import Modal from "../../UI/Modal";
 import OrderStatus from "../../UI/OrderStatus";
 import CartItem from "./CartItem";
@@ -24,12 +24,6 @@ const Cart = () =>
 		setShowOrderStatusModal(previousState => !previousState);
 		setShowModal(false);
 
-	}
-
-	const handleOrder = () =>
-	{
-		dispatcher(clearCartHandler());
-		handleOrderStatusModal();
 	}
 
 	const handleOrderWithRequest = () =>
