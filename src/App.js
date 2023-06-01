@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { checkIfLoggedIn } from "./action/auth";
 import Error404 from "./components/Error/Error404";
 import Header from "./components/Layout/Header";
 import Login from "./components/Login";
 import Products from "./components/Products/Products";
+import Orders from "./components/UserProfiles/Orders";
 import Profile from "./components/UserProfiles/Profile";
 
 
@@ -13,15 +15,59 @@ const App = () =>
 {
 	const dispatcher = useDispatch();
 	const authState = useSelector(state => state.auth);
+	const [isAuthDone, setIsAuthDone] = useState(false);
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	useEffect(() =>
 	{
-		console.log("checking if logged in inside useEffect of app.js")
-		dispatcher(checkIfLoggedIn((resp) =>
+		let token = localStorage.getItem("token");
+		if (!token)
 		{
-			console.log("inside callback");
-			console.log(resp);
-		}))
+			console.log("Not going inside dispatch checkIfLoggedIn")
+			return;
+		}
+		else
+		{
+			// console.log("inside else")
+			dispatcher(checkIfLoggedIn((resp) =>
+			{
+				// console.log("inside callback in app js --> location is: " + location.pathname);
+
+				// console.log(resp);
+
+				if (resp.error && (location.pathname === "/profile/info" || location.pathname === "/profile/orders"))
+				{
+					if (resp.status === 400)
+					{
+						alert("Please login to access this page.");
+						localStorage.removeItem("token");
+						navigate("/login");
+					}
+					else if (resp.status === 401)
+					{
+						alert("Session expired. Please login again to continue...");
+						localStorage.removeItem("token");
+						navigate("/login");
+					}
+					else if (resp.status === 404)
+					{
+						alert("Please login to access this page");
+						navigate("/login");
+					}
+
+				}
+				else if (resp.error)
+				{
+					console.log("error in checking if user is logged in");
+					console.log("error code: " + resp.status);
+					// alert("handle this error")
+					// navigate("/login");
+				}
+				setIsAuthDone(true);
+			}))
+		}
+
 	}, []);
 
 	return (
@@ -39,7 +85,11 @@ const App = () =>
 				<Route path="/" element={<Products />}>
 					<Route path="category/:category" element={<Products />} />
 				</Route>
-				<Route path="/profile" element={<Profile />} />
+				<Route path="/profile/info" element={<Profile isAuthDone={isAuthDone} />} />
+
+				<Route path="/profile" element={<Navigate to="/profile/info" replace />} />
+				<Route path="/profile/orders" element={<Orders isAuthDone={isAuthDone} />} />
+
 				<Route path="/404" element={<Error404 />} />
 				<Route
 					path="*"

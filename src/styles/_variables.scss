@@ -2,3 +2,9 @@ $primary: rgb(0, 128, 128);
 $secondary: rgb(0, 128, 128);
 $white: white;
 $black: black;
+
+@mixin flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

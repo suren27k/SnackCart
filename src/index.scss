@@ -7,6 +7,8 @@
 @import "./styles/modal.scss";
 @import "./styles/cart.scss";
 @import "./styles/login.scss";
+@import "./styles/orders.scss";
+// @import "~bootstrap/scss/bootstrap";
 
 * {
 	box-sizing: border-box;
@@ -28,3 +30,11 @@ body {
 	height: auto;
 	border-radius: 20px;
 }
+
+// .divider:after,
+// .divider:before {
+// 	content: "";
+// 	flex: 1;
+// 	height: 1px;
+// 	background: #eee;
+// }

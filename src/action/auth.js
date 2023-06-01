@@ -3,9 +3,10 @@ import axios from "axios";
 const BASE_URL = "https://identitytoolkit.googleapis.com/v1/";
 const API_KEY = "AIzaSyD5I97D1icojKp86dSrk-rrcbVSyHsQLkA";
 
+//this is a thunk outer function
 export const signUpWithEmailPasswordHandler = (loginData, callback) =>
 {
-
+	//this is the inner thunk function which is asynchronous
 	return async (dispatch) =>	//async is possible here because of thunk
 	{
 		try
@@ -57,7 +58,6 @@ export const loginWithEmailAndPasswordHandler = (loginData, callback) =>
 				payload: response.data
 			});
 			localStorage.setItem("token", response.data.idToken);
-			localStorage.setItem("localId", response.data.localId);
 			return callback(response.data);
 
 		}
@@ -77,7 +77,7 @@ export const loginWithEmailAndPasswordHandler = (loginData, callback) =>
 //use token from previous login and send a login request again to keep user logged in.
 export const checkIfLoggedIn = (callback) =>
 {
-	console.log("inside checkIfLoggedIn")
+	// console.log("inside checkIfLoggedIn")
 	return async (dispatch) =>
 	{
 		try
@@ -85,6 +85,10 @@ export const checkIfLoggedIn = (callback) =>
 			let token = localStorage.getItem("token");
 			if (!token)
 			{
+				// return callback({
+				// 	error: true,
+				// 	status: 404
+				// })
 				return;
 			}
 
@@ -93,12 +97,13 @@ export const checkIfLoggedIn = (callback) =>
 				idToken: token
 			});
 
+			// console.log(response)
+
 			//send login request
 			dispatch({
 				type: "LOGIN",
 				payload: {
 					idToken: token,
-					localId: response.data.users[0].localId,
 					...response.data
 				}
 			});
@@ -110,10 +115,11 @@ export const checkIfLoggedIn = (callback) =>
 		{
 
 			// console.log("error: " + error.response);
+			// console.log(error)
 
 			return callback({
 				error: true,
-				response: error.response
+				status: error.response.status
 			});
 		}
 	}

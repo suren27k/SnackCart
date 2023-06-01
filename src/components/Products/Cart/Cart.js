@@ -98,10 +98,10 @@ const Cart = () =>
 							{cartItems.length === 0 ? (
 								<h3 className="empty-cart">Your cart is empty : /</h3>
 							)
-								: (cartItems.map((cartItem) =>
+								: (cartItems.map((cartItem, index) =>
 								{
 									return (
-										<CartItem cartItem={cartItem} key={cartItem.id} onAddItem={(item) => dispatchToStore(item, 1)} onRemoveItem={(item) => dispatchToStore(item, -1)} />
+										<CartItem index={index} cartItem={cartItem} key={cartItem.id} onAddItem={(item) => dispatchToStore(item, 1)} onRemoveItem={(item) => dispatchToStore(item, -1)} />
 									)
 								}))
 							}

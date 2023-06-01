@@ -1,7 +1,10 @@
-const CartItem = ({ cartItem, onAddItem, onRemoveItem }) =>
+const CartItem = ({ index, cartItem, onAddItem, onRemoveItem }) =>
 {
 
 	return (<div className="checkout-modal_list-item">
+		<div className="item-number">
+			<div>{index + 1}</div>
+		</div>
 		<div className="img-wrap">
 			<img className="img-fluid" src={`/assets/${cartItem.thumbnail}`} alt={cartItem.title} />
 		</div>

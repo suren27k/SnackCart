@@ -1,0 +1,114 @@
+.orders-section {
+	@include flexCenter;
+	flex-direction: column;
+	padding: 20px 20px;
+}
+
+.orders-list {
+	@include flexCenter;
+	flex-direction: column;
+	padding: 20px 20px;
+	width: 50%;
+}
+
+.order-item {
+	width: 100%;
+	margin: 10px auto;
+	padding: 0px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border: 0.5px solid teal;
+
+	&-number {
+		display: flex;
+		// flex-grow: 1;
+		color: teal;
+		font-size: 20px;
+	}
+
+	&-info {
+		display: flex;
+		justify-content: space-between;
+		// border: 1px solid teal;
+		flex-grow: 3;
+
+		padding: 10px 25px;
+
+		&-text {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 2;
+			justify-content: space-between;
+			// flex-basis: 350px;
+			padding-left: 20px;
+		}
+		&-img {
+			display: flex;
+			flex-grow: 1;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			// flex-basis: 250px;
+		}
+
+		&-quantity {
+			display: flex;
+			color: teal;
+			font-size: 16px;
+		}
+	}
+
+	&-link {
+		@include flexCenter;
+		// border: 1px solid teal;
+		padding: 10px 10px;
+		// flex-grow: 2;
+
+		button {
+			background-color: $white;
+			padding: 12px 24px;
+
+			border-radius: 4px;
+			color: $primary;
+			cursor: pointer;
+			margin-right: 12px;
+			align-self: center;
+			font-size: 16px;
+		}
+
+		button:hover {
+			background-color: $primary;
+			color: $white;
+		}
+	}
+}
+
+.order-item:hover {
+	box-shadow: 2px 1.5px teal;
+}
+
+h1 {
+	text-align: center;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+	// flex: 25%;
+	// max-width: 35%;
+	padding: 0 5px;
+}
+
+.column img {
+	margin-top: 8px;
+	width: 100px;
+	height: 150px;
+	// vertical-align: middle;
+	// width: 100%;
+}

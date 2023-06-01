@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { getAllOrdersOfUser } from "../../action/profile";
 import Loader from "../UI/Loader";
 import ProfileNavbar from "./ProfileNavbar";
 
-const Profile = ({ isAuthDone }) =>
+const Orders = ({ isAuthDone }) =>
 {
 	const [loader, setLoader] = useState(false);
 	const [items, setItems] = useState([]);
 	const dispatcher = useDispatch();
 	let navigate = useNavigate();
-	let orders = [];
-	const token = localStorage.getItem("token");
 	const location = useLocation();
-	// console.log("token: " + token)
+	const token = localStorage.getItem("token");
 
 	useEffect(() =>
 	{
@@ -49,7 +47,7 @@ const Profile = ({ isAuthDone }) =>
 					// console.log(ordersMap)
 
 					// const data = respData.map((item) => item);
-					setItems(ordersMap);
+					setItems(ordersMap.reverse());
 					// orders = response.data;
 					// console.log("orders ---> ");
 					// console.log(data);
@@ -64,7 +62,7 @@ const Profile = ({ isAuthDone }) =>
 
 					console.log(response);
 
-					if (response.error && location.pathname === "/profile/info")
+					if (response.error && location.pathname === "/profile/orders")
 					{
 						if (response.status === 400)
 						{
@@ -92,6 +90,7 @@ const Profile = ({ isAuthDone }) =>
 
 		if (isAuthDone)
 		{
+			console.log("isauthdone is true finally!!")
 			getOrdersRequest();
 		}
 
@@ -103,7 +102,6 @@ const Profile = ({ isAuthDone }) =>
 		}
 
 	}, [isAuthDone]);
-
 
 	return (
 		<>
@@ -122,24 +120,66 @@ const Profile = ({ isAuthDone }) =>
 					return (
 						<>
 							<ProfileNavbar />
-							<main>
-								<NavLink to="/">Go Back</NavLink>
-								<div>
-									<h3>Your Orders</h3>
-								</div>
+							<h1>Your Orders</h1>
 
+							<section className="orders-section">
+
+								<ul className="orders-list">
+
+									{items.map((item, index) =>
+									{
+
+										return (
+											<li className="order-item" key={item.id}>
+												<div className="order-item-number">
+													<div>{index + 1}</div>
+												</div>
+												<div className="order-item-info">
+													<div className="order-item-info-text">
+														<div className="order-body">
+
+															<p>Order Id: {item.id}</p>
+															<p>Ordered On: {item.orderedOn.day + " " + item.orderedOn.time}</p>
+															<p>Items ordered: {item.items.length}</p>
+														</div>
+														<hr></hr>
+														<div className="order-footer">
+
+															<p>Total Amount: {item.totalAmount}</p>
+														</div>
+													</div>
+													<div className="order-item-info-img">
+														<div className="row">
+															<div className="column">
+																<img className="img-fluid" src={`/assets/${item.items[0].thumbnail}`} />
+															</div>
+															<div className="column">
+																<img className="img-fluid" src={`/assets/${item.items[1].thumbnail}`} />
+															</div>
+
+														</div>
+														{item.items.length > 2 &&
+															<div className="order-item-info-quantity">
+																<p>+{item.items.length - 2} more</p>
+															</div>
+														}
+													</div>
+												</div>
+												<div className="order-item-link">
+													<button>View</button>
+												</div>
+											</li>
+										);
+									})}
+
+								</ul>
 								{loader && <Loader />}
-							</main>
-						</>
-					)
-
+							</section>
+						</>)
 				}
 			})()}
-
-
 		</>
-
 	);
 }
 
-export default Profile;
+export default Orders;

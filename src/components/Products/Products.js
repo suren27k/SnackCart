@@ -48,6 +48,7 @@ const Products = () =>
 				//send request
 				const response = await axios.get(url);
 				const respData = response.data;
+				// console.log(response.data)
 
 				if (!respData)
 				{
@@ -75,7 +76,7 @@ const Products = () =>
 		return () =>
 		{
 			setItems([]);
-			setLoader(true);
+			setLoader(false);
 		}
 	}, [params.category, searchQueryParams]);
 

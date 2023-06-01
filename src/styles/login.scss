@@ -25,6 +25,8 @@
 			0 0 0 1px rgba(10, 10, 10, 0.02);
 		min-width: 350px;
 		max-width: 100%;
+		border-radius: 8px;
+		border: 0.5px solid teal;
 
 		.tab-selector {
 			display: flex;
@@ -77,6 +79,10 @@
 					margin-right: 0;
 				}
 			}
+		}
+
+		.auth-signup-prompt {
+			margin-top: 15px;
 		}
 	}
 }

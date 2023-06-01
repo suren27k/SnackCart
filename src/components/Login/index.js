@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { loginWithEmailAndPasswordHandler, signUpWithEmailPasswordHandler } from "../../action/auth";
 import Loader from "../UI/Loader";
 
+
 const Login = () =>
 {
-	const params = useParams();
+	// const params = useParams();
 	const location = useLocation();
 	const [showLoader, setShowLoader] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(false);
@@ -26,6 +27,8 @@ const Login = () =>
 
 	let buttonText = "";
 
+	let isLoginCase = false;
+
 	const setPageData = () =>
 	{
 		if (location.pathname === validPaths[0])
@@ -35,6 +38,7 @@ const Login = () =>
 		else if (location.pathname === validPaths[1])
 		{
 			buttonText = "Login";
+			isLoginCase = true;
 		}
 	}
 
@@ -64,7 +68,7 @@ const Login = () =>
 	const handleLoginAction = (e) =>
 	{
 		e.preventDefault();
-		console.log(loginData)
+		// console.log(loginData)
 		if (location.pathname === "/signup")
 		{
 			setShowErrorMsg(false);
@@ -134,7 +138,7 @@ const Login = () =>
 				<div className="auth-container--box">
 					<div className="tab-selector">
 						<NavLink to="/login"><h3>Login</h3></NavLink>
-						<NavLink to="/signup"><h3>Signup</h3></NavLink>
+						<NavLink to="/signup"><h3>Sign Up</h3></NavLink>
 					</div>
 					<form autoComplete={"off"} onSubmit={handleLoginAction}>
 						<div className="input-wrap">
@@ -157,15 +161,63 @@ const Login = () =>
 								onChange={handleInput}
 							/>
 						</div>
-						{showErrorMsg && <p style={{ color: "red", fontSize: "11px" }}>{errorMessage}</p>}
 						<div className="button-wrap">
 							<button className="login-btn">
 								{buttonText}
 							</button>
 						</div>
 					</form>
+					<div className="auth-signup-prompt">
+						{isLoginCase && <p>Don't have an account? Sign up <NavLink to="/signup" >here</NavLink>.</p>}
+						{!isLoginCase && showErrorMsg && <p style={{ color: "red", fontSize: "12px" }}>{errorMessage}</p>}
+					</div>
 				</div>
+
 			</div>
+
+
+			{/* <section className="vh-100">
+				<div className="container py-5 h-100">
+					<div className="row d-flex align-items-center justify-content-center h-100">
+						<div className="col-md-8 col-lg-7 col-xl-6">
+							<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+								className="img-fluid" alt="Phone image" />
+						</div>
+						<div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+							<form>
+
+								<div className="form-outline mb-4">
+									<input type="email" id="form1Example13" className="form-control form-control-lg" />
+									<label className="form-label" for="form1Example13">Email address</label>
+								</div>
+
+
+								<div className="form-outline mb-4">
+									<input type="password" id="form1Example23" className="form-control form-control-lg" />
+									<label className="form-label" for="form1Example23">Password</label>
+								</div>
+
+								<div className="d-flex justify-content-around align-items-center mb-4">
+
+
+									<div className="form-check">
+										<input className="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+										<label className="form-check-label" for="form1Example3"> Remember me </label>
+									</div>
+									<a href="#!">Forgot password?</a>
+								</div>
+
+
+								<button type="submit" className="btn btn-primary btn-lg btn-block">Sign in</button>
+
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</section> */}
+
+
 			{showLoader && <Loader />}
 		</>
 	)

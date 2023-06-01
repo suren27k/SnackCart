@@ -1,6 +1,8 @@
 import axios from "axios"
 import { getCurrentDate } from "../mixins/DateUtil"
 
+//action creators
+
 export const addItemHandler = (item) =>
 {
 	return dispatch =>
@@ -62,14 +64,26 @@ export const placeOrderRequest = (callback) =>
 
 			const orderedOn = getCurrentDate(new Date());
 
+			let localId = auth.localId;
+
+			if (auth.localId === undefined)
+			{
+				localId = auth.users[0].localId;
+			}
+
+			if (localId === undefined || auth.idToken === undefined)
+			{
+				console.log("One of the things is undefined")
+			}
 
 			//note: check rules in firebase to undetstand order/id part of url.
 			// ".json" is needed for firebase.
-			const response = await axios.post(`https://gfg-react-demo-default-rtdb.asia-southeast1.firebasedatabase.app/orders/${auth.localId}.json?auth=${auth.idToken}`,
+			const response = await axios.post(`https://gfg-react-demo-default-rtdb.asia-southeast1.firebasedatabase.app/orders/${localId}.json?auth=${auth.idToken}`,
 				{
 					...cart,		//payload to save in db
 					orderedOn
 				});
+
 			//once order request is successful, clear the cart in UI.
 			dispatch({
 				type: "CLEAR_CART"
@@ -90,67 +104,4 @@ export const placeOrderRequest = (callback) =>
 			})
 		}
 	}
-}
-
-export const getAllOrdersOfUser = (callback) =>
-{
-	console.log("inside getAllOrdersOfUser")
-	return async (dispatch, getState) =>
-	{
-		try
-		{
-			const auth = await getState().auth;
-
-			console.log("auth idtoken: " + auth.idToken);
-
-			let token = localStorage.getItem("token");
-			if (!token)
-			{
-				return;
-			}
-
-			console.log("localstorage idtoken: " + token);
-
-			// setTimeout(() =>
-			// {
-			// 	console.log("auth idtoken: later : " + auth.idToken);
-			// }, 3000);
-
-			//check if currently loggedin
-			if (!token)
-			{
-				console.log("inside the if not auth token")
-				//to do: if not logged in, show option to take to login page.
-				return callback({
-					error: true,
-					data: {
-						error: "Please login to place order."	//data.error hierarhcy is mimiciking friebase hierarchy for error object
-					}
-				});
-			}
-			else
-			{
-				console.log("localstorage token is present.")
-			}
-
-
-			//note: check rules in firebase to undetstand order/id part of url.
-			// ".json" is needed for firebase.
-			const response = await axios.get(`https://gfg-react-demo-default-rtdb.asia-southeast1.firebasedatabase.app/orders/${auth.localId}.json?auth=${auth.idToken}`);
-
-			return callback({
-				error: false,
-				data: response.data		//to show order id from firebase in modal
-			})
-		}
-		catch (error)
-		{
-			console.log("some error occurred in catch: " + error)
-			return callback({
-				error: true,
-				...error.response
-			})
-		}
-	}
-
 }
