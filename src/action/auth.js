@@ -117,6 +117,9 @@ export const checkIfLoggedIn = (callback) =>
 			// console.log("error: " + error.response);
 			// console.log(error)
 
+			// maybe clear idtoken here from local storage if any error occurs.
+			localStorage.removeItem("token");
+
 			return callback({
 				error: true,
 				status: error.response.status
