@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://identitytoolkit.googleapis.com/v1/";
-const API_KEY = "AIzaSyD5I97D1icojKp86dSrk-rrcbVSyHsQLkA";
+export const BASE_URL = "https://identitytoolkit.googleapis.com/v1/";
+export const API_KEY = "AIzaSyD5I97D1icojKp86dSrk-rrcbVSyHsQLkA";
 
 //this is a thunk outer function
 export const signUpWithEmailPasswordHandler = (loginData, callback) =>
@@ -99,6 +99,7 @@ export const checkIfLoggedIn = (callback) =>
 
 			// console.log(response)
 
+
 			//send login request
 			dispatch({
 				type: "LOGIN",
@@ -114,7 +115,7 @@ export const checkIfLoggedIn = (callback) =>
 		catch (error)
 		{
 
-			// console.log("error: " + error.response);
+			// console.log("error in checkIfLoggedIn: " + error.response);
 			// console.log(error)
 
 			// maybe clear idtoken here from local storage if any error occurs.
@@ -122,7 +123,8 @@ export const checkIfLoggedIn = (callback) =>
 
 			return callback({
 				error: true,
-				status: error.response.status
+				status: error.response.status,
+				message: error.response.data.error.message
 			});
 		}
 	}
@@ -136,6 +138,18 @@ export const logout = () =>
 		dispatch({
 			type: "CLEAR_CART"
 		});
+		dispatch({
+			type: "LOGOUT"
+		});
+	}
+}
+
+export const expireSession = () =>
+{
+	// console.log("expire session called!")
+	return dispatch =>
+	{
+		localStorage.removeItem("token");
 		dispatch({
 			type: "LOGOUT"
 		});

@@ -81,13 +81,13 @@ const Login = () =>
 
 				if (response.error)
 				{
-					console.log("error: " + response.error);
+					// console.log("error: " + response.error);
 					setErrorMessage(response.response.data.error.message);
 					setShowErrorMsg(true);
 				}
 				else
 				{
-					console.log("SignUp success!");
+					// console.log("SignUp success!");
 					navigate("/", { replace: true });	//replaces existing url instead of adding a new one.
 				}
 
@@ -104,16 +104,19 @@ const Login = () =>
 				//this function will be executed in auth.js when callback() is called.
 				//For now, it is being passed to auth.js, not executed.
 
+				// console.log("response in login")
+				// console.log(response);
 
 				if (response.error)
 				{
-					console.log("error: " + response.error);
+					// console.log("error during login: " + response.error);
+					// console.log("error msg: " + response.response.data.error.message)
 					setErrorMessage(response.response.data.error.message);
 					setShowErrorMsg(true);
 				}
 				else
 				{
-					console.log("Login success!");
+					// console.log("Login success!");
 					navigate("/", { replace: true });	//replaces existing url instead of adding a new one.
 				}
 
@@ -126,11 +129,13 @@ const Login = () =>
 	const handleInput = (e) =>
 	{
 		// console.log("handleinput: " + e.target.value);
+
 		setLoginData({
 			...loginData,
 			[e.target.name]: e.target.value
 		})
 	}
+
 
 	return (
 		<>
@@ -168,8 +173,8 @@ const Login = () =>
 						</div>
 					</form>
 					<div className="auth-signup-prompt">
+						{showErrorMsg && <p style={{ color: "red", fontSize: "12px" }}>{errorMessage}</p>}
 						{isLoginCase && <p>Don't have an account? Sign up <NavLink to="/signup" >here</NavLink>.</p>}
-						{!isLoginCase && showErrorMsg && <p style={{ color: "red", fontSize: "12px" }}>{errorMessage}</p>}
 					</div>
 				</div>
 

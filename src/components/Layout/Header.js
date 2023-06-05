@@ -2,7 +2,7 @@ import { useState } from "react";
 // import { Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { logout } from "../../action/auth";
+import { expireSession, logout } from "../../action/auth";
 import Cart from "../Products/Cart/Cart";
 import SearchBox from "../UI/SearchBox";
 const Header = () =>
@@ -25,22 +25,12 @@ const Header = () =>
 
 		// loginAction();
 		setShowAlert(true);
-		// alert("logout success!!")
+		alert("You have been logged out!")
 	}
 
 	const userProfileAction = () =>
 	{
-		// let token = localStorage.getItem("token");
-		// if (!token)
-		// {
-		// 	navigate("/profile");
-		// }
-		// else
-		// {
-		// 	alert("Please login to access your profile 123");
-		// }
-
-		navigate("/profile");
+		navigate("/profile/info");
 	}
 
 
@@ -100,6 +90,11 @@ const Header = () =>
 									</div>
 								</>
 							)
+						}
+						else if (token === null && !authState && !authState.idToken)
+						{
+							console.log("CALLING expire session from header js if token: " + token)
+							dispatcher(expireSession());
 						}
 
 					})()}

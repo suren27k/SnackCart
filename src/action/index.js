@@ -52,7 +52,7 @@ export const placeOrderRequest = (callback) =>
 			//check if currently loggedin
 			if (!auth.idToken)
 			{
-				console.log("inside the if not uaht token")
+				// console.log("inside the if not uaht token")
 				//to do: if not logged in, show option to take to login page.
 				return callback({
 					error: true,
@@ -97,7 +97,8 @@ export const placeOrderRequest = (callback) =>
 		}
 		catch (error)
 		{
-			console.log("some error occurred in catch: " + error)
+			// console.log("some error occurred in catch: " + error)
+
 			return callback({
 				error: true,
 				...error.response

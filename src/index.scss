@@ -8,6 +8,8 @@
 @import "./styles/cart.scss";
 @import "./styles/login.scss";
 @import "./styles/orders.scss";
+@import "./styles/profile.scss";
+@import "./styles/spinner.scss";
 // @import "~bootstrap/scss/bootstrap";
 
 * {
@@ -31,6 +33,9 @@ body {
 	border-radius: 20px;
 }
 
+.tip {
+	overflow-y: auto;
+}
 // .divider:after,
 // .divider:before {
 // 	content: "";

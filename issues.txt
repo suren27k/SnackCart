@@ -1,0 +1,31 @@
+# SnackCart
+
+A simple e-commerce web app built using ReactJS.
+Uses the latest ReactJS v18, Redux store and React Router v6.
+
+It is hosted live in firebase at: https://snack-cart-suren.firebaseapp.com/
+
+Features:
+
+1. Entire app is made from scratch using ReactJS, React Router v6, and Redux.
+2. Fully functional user accounts with signup, login, logout and authorisation using Firebase Authentication.
+3. User profile page with order history.
+4. Backend is powered by Firebase Realtime Database.
+
+To implement:
+
+1. Wide-range of products with pictures. [Done]
+2. Proper search functionality to find products by name or category.
+3. Implementing proper categories for products. [Done]
+4. Authentication OAuth to allow signups using existing Google account.
+5. Converting it to a responsive web app that has proper support for various devices.
+
+Issues:
+
+1. Empty orders page and profile page. Check checkIfLoggedIn after expiration and send correct alert message based on error message in response.
+2. Check login request and store cookie token.
+3. Alert boxes and toast message components.
+4. In "/" path, set a cookie value as false when a user visits new. Show a modal about logging in to see all features. Mention dummy email id is enough to login and can delete account.
+   See how to provide delete account in fir4ebase.
+5. In cart, before order now, show another page to check address and delivery info. On order now press button action, show the other elements and hide existing ones.
+6. Sometimes when session expires, local storage token is cleared but auth store is not cleared. So, clicking on login button keeps redirecting to "/" - unable to login until apge is reloaded.

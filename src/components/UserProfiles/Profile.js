@@ -1,74 +1,226 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { getAllOrdersOfUser } from "../../action/profile";
-import Loader from "../UI/Loader";
+import { Navigate, useNavigate } from "react-router-dom";
+import { getUserProfileData, sendDisplayNameChangeRequest, sendEmailVerificationRequest } from "../../action/profile";
+import AccountDeletionMessage from "../UI/AccountDeletionMessage";
+import Loader, { Overlay } from "../UI/Loader";
+import Spinner from "../UI/Spinner";
 import ProfileNavbar from "./ProfileNavbar";
 
 const Profile = ({ isAuthDone }) =>
 {
 	const [loader, setLoader] = useState(false);
-	const [items, setItems] = useState([]);
+	const [showContent, setShowContent] = useState(false);
 	const dispatcher = useDispatch();
-	let navigate = useNavigate();
-	let orders = [];
+	const navigate = useNavigate();
 	const token = localStorage.getItem("token");
-	const location = useLocation();
+
+	const [user, setUser] = useState([]);
+	const [editNameTrigger, setEditNameTrigger] = useState(false);
 	// console.log("token: " + token)
+
+	const [newName, setNewName] = useState("");
+	const [showSpinner, setShowSpinner] = useState(false);
+	const [showSpinner2, setShowSpinner2] = useState(false);
+	const [showAccountDeletionMsg, setShowAccountDeletionMsg] = useState(false);
 
 	useEffect(() =>
 	{
-		async function getOrdersRequest()
+		// console.log("inside useEffect of Profile js isAuthDone: " + isAuthDone)
+
+		async function getUserData()
 		{
 			setLoader(true);
-			await dispatcher(getAllOrdersOfUser(response =>
+			// console.log("In Profile.js sending request to getUserProfileData ");
+			await dispatcher(getUserProfileData(response =>
 			{
 				//callback function
 
+
+				// console.log("response of getUserProfileData is below:")
 				// console.log(response);
 
-				if (!response.error)
+				try
+				{
+					if (!response.error)
+					{
+						setLoader(false);
+						// console.log(response)
+						let user = response.users[0];
+						// console.log("in Profile.js and user data is below: ")
+						// console.log(user)
+
+
+						// let createdDate = getCurrentDate(new Date(parseInt(user.createdAt)));
+						// console.log("createdDate: " + user.createdAt);
+						// console.log("createdDate after dateutil: " + createdDate.time + "-->" + createdDate.day);
+
+						let createdDate = new Date(parseInt(user.createdAt)).toString();
+
+						let num = parseInt(user.lastLoginAt) + parseInt(user.validSince);
+						let validSince = new Date(num).toString();
+
+						let lastLoginAt = new Date(parseInt(user.lastLoginAt)).toString();
+						let passwordUpdatedAt = new Date(parseInt(user.passwordUpdatedAt)).toString();
+
+						let emailVerified = user.emailVerified.toString();
+
+						// console.log("validSince: " + user.validSince + "-->" + validSince);
+						setUser({
+							...user,
+							createdDate: createdDate,
+							validSince: validSince,
+							lastLoginAt: lastLoginAt,
+							email: user.email,
+							emailVerified: emailVerified,
+							passwordUpdatedAt: passwordUpdatedAt,
+							displayName: user.displayName
+						});
+						// console.log("orderIdArray: " + orderIdArray);
+
+						setNewName(user.displayName);
+
+						setShowContent(true);
+					}
+					else
+					{
+						// console.log("Yes response error")
+						alert(response.data.error || "Some generic msg incase key missing");
+						setLoader(false);
+
+						// console.log(response);
+
+						if (response.error)
+						{
+							if (response.status === 400)
+							{
+								alert("Session expired. Please login again to continue...");
+								localStorage.removeItem("token");
+								navigate("/login");
+							}
+							else if (response.status === 401)
+							{
+								alert("Session expired. Please login again to continue...");
+								localStorage.removeItem("token");
+								navigate("/login");
+							}
+							else if (response.status === 404)
+							{
+								alert("Please login to access this page");
+								navigate("/login");
+							}
+
+						}
+					}
+				}
+				catch (error)
 				{
 					setLoader(false);
-					// console.log(response.data)
-					const respData = response.data;
-					const orderIdArray = Object.keys(respData)
-					// console.log("orderIdArray: " + orderIdArray);
 
-					let ordersMap = [];
-					orderIdArray.forEach((id, index) =>
+					// console.log(error)
+
+					if (response.error)
 					{
-						// console.log("id: " + id + " --> index: " + index);
-						ordersMap[index] = {
-							...respData[id],
-							id: id
+						if (response.status === 400)
+						{
+							alert("Session expired. Please login again to continue...");
+							localStorage.removeItem("token");
+							navigate("/login");
 						}
+					}
+				}
+
+
+
+			}));
+		}
+
+		if (isAuthDone)
+		{
+			getUserData();
+		}
+
+		// setTimeout(() =>
+		// {
+		// 	console.log("isAuthDone inside timeout: " + isAuthDone)
+		// 	if (!isAuthDone)
+		// 	{
+		// 		alert("reloading via timeout")
+		// 		window.location.reload(false);
+		// 	}
+		// }, 5000);
+
+		//clean up function which runs when component is destroyed
+		return () =>
+		{
+			setLoader(false);
+			setUser([]);
+		}
+
+	}, [isAuthDone]);
+
+	const editNameAction = () =>
+	{
+		setEditNameTrigger(true);
+	}
+
+	const nameOnChangeAction = (e) =>
+	{
+
+		setNewName(e.target.value)
+	}
+
+	async function sendEditNameRequest() 
+	{
+		let newDisplayName = newName;
+		newDisplayName = newDisplayName.trim();
+
+		setNewName(newDisplayName);
+
+		if (newDisplayName.length > 25)
+		{
+			alert("Name should not exceed 25 characters");
+			return;
+		}
+
+		setShowSpinner(true);
+
+		// setTimeout(() =>
+		// {
+		// 	setShowSpinner(false);
+		// }, 2000);
+
+
+		await dispatcher(sendDisplayNameChangeRequest(newDisplayName, (response) =>
+		{
+			//callback function
+
+			try
+			{
+				if (!response.error)
+				{
+
+
+					setUser({
+						...user,
+						displayName: response.data.displayName
 					});
 
-					// console.log("ordersMap: " + ordersMap)
-					// console.log(ordersMap)
-
-					// const data = respData.map((item) => item);
-					setItems(ordersMap);
-					// orders = response.data;
-					// console.log("orders ---> ");
-					// console.log(data);
+					alert("Name changed!")
 				}
 				else
 				{
 					// console.log("Yes response error")
 					alert(response.data.error || "Some generic msg incase key missing");
-					setLoader(false);
 
-					console.log("inside callback in profile js --> location is: " + location.pathname);
 
-					console.log(response);
+					// console.log(response);
 
-					if (response.error && location.pathname === "/profile/info")
+					if (response.error)
 					{
 						if (response.status === 400)
 						{
-							alert("Please login to access this page.");
+							alert("Session expired. Please login again to continue...");
 							localStorage.removeItem("token");
 							navigate("/login");
 						}
@@ -87,26 +239,121 @@ const Profile = ({ isAuthDone }) =>
 					}
 				}
 
-			}));
-		}
+				//revert ui changes
+				setShowSpinner(false);
+				setEditNameTrigger(false);
+			}
+			catch (error)
+			{
 
-		if (isAuthDone)
+				// console.log(error)
+
+				if (response.error)
+				{
+					if (response.status === 400)
+					{
+						alert("Session expired. Please login again to continue...");
+						localStorage.removeItem("token");
+						navigate("/login");
+					}
+				}
+			}
+		}));
+
+
+	}
+
+	async function requestEmailVerificationAction()
+	{
+		// console.log("inside requestEmailVerificationAction")
+
+		setShowSpinner2(true);
+
+		// setTimeout(() =>
+		// {
+		// 	setShowSpinner2(false);
+		// }, 2000);
+
+		// return;
+
+		await dispatcher(sendEmailVerificationRequest(response =>
 		{
-			getOrdersRequest();
-		}
+			//callback function
 
-		//clean up function which runs when component is destroyed
-		return () =>
-		{
-			setItems([]);
-			setLoader(false);
-		}
+			try
+			{
+				if (!response.error)
+				{
 
-	}, [isAuthDone]);
+					alert("Please check your email (spam folder) for verifcation link from Google Firebase!")
+				}
+				else
+				{
+					// console.log("Yes response error")
+					alert(response.data.error || "Some generic msg incase key missing");
 
+
+					// console.log(response);
+
+					if (response.error)
+					{
+						if (response.status === 400)
+						{
+							alert("Session expired. Please login again to continue...");
+							localStorage.removeItem("token");
+							navigate("/login");
+						}
+						else if (response.status === 401)
+						{
+							alert("Session expired. Please login again to continue...");
+							localStorage.removeItem("token");
+							navigate("/login");
+						}
+						else if (response.status === 404)
+						{
+							alert("Please login to access this page");
+							navigate("/login");
+						}
+
+					}
+				}
+
+				//revert ui changes
+				setShowSpinner2(false);
+			}
+			catch (error)
+			{
+
+				// console.log(error)
+
+				if (response.error)
+				{
+					if (response.status === 400)
+					{
+						alert("Session expired. Please login again to continue...");
+						localStorage.removeItem("token");
+						navigate("/login");
+					}
+				}
+			}
+		}));
+	}
+
+	const deleteAccountAction = () =>
+	{
+		// console.log("Inside delete account action")
+		setShowAccountDeletionMsg(true);
+	}
+
+	const closeDeleteAccountActionModal = () =>
+	{
+		setShowAccountDeletionMsg(false);
+	}
 
 	return (
 		<>
+			<ProfileNavbar />
+
 			{(() =>
 			{
 
@@ -117,19 +364,100 @@ const Profile = ({ isAuthDone }) =>
 					)
 
 				}
-				else
+				else if (showContent)
 				{
 					return (
 						<>
-							<ProfileNavbar />
-							<main>
-								<NavLink to="/">Go Back</NavLink>
-								<div>
-									<h3>Your Orders</h3>
-								</div>
+							<h1>Profile Information</h1>
+							<section className="profile-section">
+								<div className="profile-info-container">
+									<div className="info-card">
+										<div className="personal-info">
+											<h2>Your Personal Information</h2>
+											<div className="display-name">
+												<span className="item-name">Display Name :</span>
+												{
+													!editNameTrigger ?
+														(
+															<>
+																<span className="item-value">{user.displayName || "Not set yet"}</span>
+																<span onClick={editNameAction} className="item-action">
+																	<span className="action-divider">|</span>
+																	Edit Name
+																</span>
+															</>
+														)
 
+														:
+														(
+
+															<span className="edit-item">
+																<input
+																	autoFocus
+																	placeholder="Enter new name"
+																	type="text"
+																	name="name"
+																	value={newName}
+																	onChange={nameOnChangeAction}></input>
+																{showSpinner ?
+																	<>
+																		<button>Saving..</button><Spinner />
+																		<Overlay />
+																	</>
+																	:
+																	<button onClick={sendEditNameRequest}>
+																		Save
+																	</button>
+
+																}
+
+															</span>
+
+														)
+												}
+
+
+											</div>
+											<div><span className="item-name">Email :</span> <span className="item-value">{user.email}</span></div>
+											<div><span className="item-name">Email verified :</span> <span className="item-value">{user.emailVerified}</span>
+												{
+													user.emailVerified === "false" &&
+													<>
+														<span onClick={requestEmailVerificationAction} className="item-action">
+															<span className="action-divider">|</span>
+															Request Verification email
+															{showSpinner2 &&
+																<>
+																	<Spinner />
+																	<Overlay />
+																</>
+															}
+
+														</span>
+														<br></br><span className="action-tip">(You can request verification if you are not using a dummy email)</span>
+													</>
+												}
+
+											</div>
+										</div>
+										<hr></hr>
+										<div className="account-info">
+											<h2>Your Account Information</h2>
+											<div><span className="item-name">Last login at : </span> <span className="item-value">{user.lastLoginAt}</span></div>
+
+											<div><span className="item-name">Password updated at : </span> <span className="item-value">{user.passwordUpdatedAt}</span></div>
+											<div><span className="item-name">Profile creation time : </span> <span className="item-value">{user.createdDate}</span></div>
+											<div onClick={deleteAccountAction} className="delete-account">
+												<p>Delete Account</p>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+								{showAccountDeletionMsg && <AccountDeletionMessage onClose={closeDeleteAccountActionModal} />}
 								{loader && <Loader />}
-							</main>
+							</section >
 						</>
 					)
 

@@ -1,0 +1,176 @@
+.profile-section {
+	// height: 600px;
+	margin-top: 80px;
+
+	hr {
+		border: solid 1px teal;
+		width: 96%;
+		margin: 15px auto;
+	}
+}
+.profile-info-container {
+	@include flexCenter;
+	width: 100%;
+	flex-direction: column;
+
+	.info-card {
+		padding: 20px 20px;
+		border: 1px solid teal;
+		// height: 600px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+
+		h2 {
+			color: teal;
+			// text-decorat0ion: underline;
+		}
+
+		p {
+			margin: 20px 0;
+		}
+
+		.item-name {
+			color: white;
+			background-color: teal;
+			font-size: 16px;
+			padding: 3px 10px;
+		}
+
+		.item-value {
+			// text-decoration: none;
+			margin-left: 10px;
+			font-size: 16px;
+		}
+
+		.item-action {
+			// margin-right: 10px;
+			color: teal;
+			cursor: pointer;
+			// float: right;
+			margin: auto 40px;
+
+			.action-divider {
+				margin-right: 10px;
+			}
+		}
+		.action-tip {
+			margin-top: 5px;
+		}
+
+		.item-action:hover {
+			text-decoration: underline;
+		}
+
+		.edit-item {
+			input {
+				margin: auto 20px;
+				font-size: 16px;
+			}
+
+			button {
+				font-size: 16px;
+				background-color: teal;
+				border: initial;
+				border-radius: 4px;
+				color: #fff;
+				cursor: pointer;
+				padding: 3px 10px;
+			}
+		}
+
+		.personal-info {
+			display: flex;
+			flex-direction: column;
+
+			div {
+				margin: 20px 0;
+			}
+		}
+
+		.account-info {
+			display: flex;
+			flex-direction: column;
+
+			div {
+				margin: 20px 0;
+			}
+
+			.delete-account {
+				color: red;
+				margin-top: 20px;
+				margin-bottom: 0;
+
+				p {
+					margin-bottom: 0;
+				}
+			}
+			.delete-account:hover {
+				text-decoration: underline;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.account-deletion-container {
+	padding: 20px 10px;
+	.message-container {
+		display: flex;
+
+		.message {
+			align-self: center;
+			justify-content: center;
+			display: flex;
+			flex-direction: column;
+
+			margin-left: 20px;
+			text-align: center;
+
+			h2 {
+				margin-bottom: 0;
+			}
+
+			span {
+				margin-bottom: 20px;
+			}
+		}
+	}
+
+	.danger-icon {
+		align-self: center;
+		justify-content: center;
+		display: flex;
+		color: red;
+	}
+
+	.action-buttons {
+		float: right;
+		margin-top: 20px;
+
+		button {
+			font-size: 16px;
+			border-radius: 4px;
+			cursor: pointer;
+			padding: 8px 10px;
+			margin: 10px 10px;
+		}
+
+		button:hover {
+			box-shadow: 1px 1px black;
+		}
+
+		button[type="cancel"] {
+			background-color: white;
+			color: teal;
+			border: 1px solid teal;
+		}
+
+		button[type="submit"] {
+			background-color: red;
+			color: #fff;
+			border: initial;
+			margin-right: 0;
+		}
+	}
+}

@@ -2,6 +2,12 @@
 	@include flexCenter;
 	flex-direction: column;
 	padding: 20px 20px;
+
+	hr {
+		border: solid 1px teal;
+		width: 100%;
+		margin-top: 15px;
+	}
 }
 
 .orders-list {
@@ -9,6 +15,10 @@
 	flex-direction: column;
 	padding: 20px 20px;
 	width: 50%;
+
+	.empty-orders {
+		font-size: 16px;
+	}
 }
 
 .order-item {
@@ -42,6 +52,12 @@
 			justify-content: space-between;
 			// flex-basis: 350px;
 			padding-left: 20px;
+
+			.order-footer {
+				p {
+					margin-top: 0;
+				}
+			}
 		}
 		&-img {
 			display: flex;

@@ -104,6 +104,15 @@
 			span {
 				color: rgba($color: $black, $alpha: 0.5);
 			}
+
+			p {
+				margin-bottom: 0;
+				color: $primary;
+			}
+
+			a {
+				color: $primary;
+			}
 		}
 	}
 }
