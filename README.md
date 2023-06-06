@@ -19,3 +19,4 @@ To implement:
 3. Implementing proper categories for products. [Done]
 4. Authentication OAuth to allow signups using existing Google account.
 5. Converting it to a responsive web app that has proper support for various devices.
+6. Use better components for dialog boxes, alerts and toast messages (bootstrap?).
