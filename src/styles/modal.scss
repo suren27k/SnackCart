@@ -1,8 +1,8 @@
 .modal {
 	position: fixed;
 	top: 20vh;
-	left: 5%;
-	width: 90%;
+	left: 10%;
+	width: 80%;
 	background-color: white;
 	padding: 1rem;
 	border-radius: 2px;
@@ -13,12 +13,14 @@
 
 	button[type="close"] {
 		position: absolute;
-		right: 10px;
+		right: 6px;
 		top: 10px;
-		background-color: unset;
+		background-color: white;
 		border: unset;
+		padding: unset;
 		cursor: pointer;
 		color: teal;
+		width: 2rem;
 	}
 }
 
@@ -45,4 +47,9 @@
 	display: flex;
 	align-items: center;
 	width: 50%;
+}
+
+.modal__information {
+	width: 100%;
+	text-align: center;
 }

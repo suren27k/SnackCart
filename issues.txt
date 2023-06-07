@@ -29,3 +29,13 @@ Issues:
    See how to provide delete account in fir4ebase.
 5. In cart, before order now, show another page to check address and delivery info. On order now press button action, show the other elements and hide existing ones.
 6. Sometimes when session expires, local storage token is cleared but auth store is not cleared. So, clicking on login button keeps redirecting to "/" - unable to login until apge is reloaded.
+
+
+to do:
+1. use rem for font sizes and em for padding and margins.
+2. Remove display flex where not needed. GO through every element again to clean up the css. creater new mixins if needed.
+3. Remove font size =16px because that is default? Remove flex direction row because that is default.
+4. Wherever hover, add focus.
+5. Ine ach scss, create sections like layout, typography, etc..
+6. In HTML, if there are many nested elements, add a comment to closing tags to mention what element that is. Makes it easier to understand.
+7. What are CSS overflow? Tip in homescreen is not scrollable in mobile. Fix it for all modals. 

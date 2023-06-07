@@ -31,23 +31,22 @@ const ListItem = ({ data }) =>
 	return (
 		<>
 			<div onClick={handleModal} className={"item-card"}>
-				<img className={"img-fluid"} src={`/assets/${data.thumbnail}`} alt={data.title} />
+				<img className={"img-fluid item-img"} src={`/assets/${data.thumbnail}`} alt={data.title} />
 				<div className={"item-card__information"}>
-					<div className="item-top-row">
 
-						<div className={"title"}>
-							<h3>{data.title}</h3>
-						</div>
-						<div className={"pricing"}>
-							<span>₹{data.discountedPrice}</span>
-							<small>
-								<strike>₹{data.price}</strike>
-							</small>
-						</div>
+
+					<div className={"title"}>
+						<h3>{data.title}</h3>
 					</div>
 
 					<div className={"item-description"}>
 						<p>{data.description}</p>
+					</div>
+					<div className={"pricing"}>
+						<span>₹{data.discountedPrice}</span>
+						<small>
+							<strike>₹{data.price}</strike>
+						</small>
 					</div>
 				</div>
 				{
@@ -74,27 +73,28 @@ const ListItem = ({ data }) =>
 				<Modal onClose={handleModal}>
 					<div className="item-card__modal">
 						<div className="img-wrap">
-							<img className={"img-fluid"} src={`/assets/${data.thumbnail}`} alt={data.title} />
+							<img className={"img-fluid modal-img"} src={`/assets/${data.thumbnail}`} alt={data.title} />
 						</div>
 						<div className="meta">
 							<div className={"modal__information"}>
-								<div className="modal-top-row">
 
-									<div className={"title"}>
-										<h3>{data.title}</h3>
-									</div>
-									<div className={"pricing"}>
-										<span>₹{data.discountedPrice}</span>
-										<small>
-											<strike>₹{data.price}</strike>
-										</small>
-									</div>
+
+								<div className={"title"}>
+									<h3>{data.title}</h3>
 								</div>
-
 								<div className={"modal-description"}>
 									<p>{data.description}</p>
 								</div>
+								<div className={"pricing"}>
+									<span>₹{data.discountedPrice}</span>
+									<small>
+										<strike>₹{data.price}</strike>
+									</small>
+								</div>
 							</div>
+
+
+
 							<div className="modal-cart-button">
 								{
 									!item || item?.quantity < 1 ? (

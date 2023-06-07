@@ -10,24 +10,25 @@
 		list-style: none;
 		background-color: white;
 		box-shadow: 0 15px 10px -15px #1111112b;
-		padding: 0 32px;
+		justify-content: center;
 		overflow-x: auto;
+		flex-wrap: wrap;
 		li {
 			a {
 				display: inline-block;
 				padding: 10px 16px;
 				text-decoration: none;
 				color: black;
-				font-size: 14px;
-				transition: background 100ms ease-in-out;
+				font-size: 1rem;
+				transition: background 200ms ease-in-out;
 				white-space: nowrap;
 
-				&.active {
-					background-color: $primary;
+				&:hover {
+					background-color: cadetblue;
 					color: $white;
 				}
-				&:hover {
-					background-color: $secondary;
+				&.active {
+					background-color: $primary;
 					color: $white;
 				}
 			}
@@ -35,10 +36,7 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
-	.subheader-container {
-		ul {
-			padding: 0 16px;
-		}
-	}
+@media screen and (max-width: 600px) {
+	//hamburger menu for cetagories
+	// don't do for profile navbar.
 }

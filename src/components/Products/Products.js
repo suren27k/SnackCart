@@ -32,13 +32,13 @@ const Products = () =>
 		{
 			try
 			{
-				let slug = `test/sale.json`;
+				let slug = `items/sale.json`;
 
 				// console.log("params:" + JSON.stringify(params));
 
 				if (params.category)
 				{
-					slug = `test/${params.category}.json`;
+					slug = `items/${params.category}.json`;
 				}
 
 				if (searchQueryParams)
@@ -111,10 +111,12 @@ const Products = () =>
 					<Subheader />
 					<div className={"product-list"}>
 						<div className={"product-list--wrapper"}>
+
 							{items.map((item) =>
 							{
 								return <ListItem key={item.id} data={item} />;
 							})}
+
 						</div>
 					</div>
 				</>
