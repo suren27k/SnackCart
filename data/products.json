@@ -1,8 +1,8 @@
 {
-	"test": {
+	"items": {
 		"sale": [
 			{
-				"description": "Oreos!!",
+				"description": "Creamy chocolaty delightful oreos!",
 				"discountedPrice": 50,
 				"price": 55,
 				"thumbnail": "cookies/oreo.jpg",
@@ -11,22 +11,22 @@
 				"title": "Oreo Cookies 100gm"
 			},
 			{
-				"description": "Tangy crisps!!",
-				"discountedPrice": 40,
-				"price": 45,
-				"thumbnail": "crisps/curly.jpg",
-				"category": "crisps",
-				"id": 61,
-				"title": "Curly crisps 100gm"
-			},
-			{
-				"description": "Tasty home made butter cookies!",
+				"description": "Soft and tasty home made butter cookies!",
 				"discountedPrice": 70,
 				"price": 75,
 				"thumbnail": "cookies/butter.jpg",
 				"category": "cookies",
 				"id": 1,
 				"title": "Butter Cookies 250gm"
+			},
+			{
+				"description": "Tangy swirly crisps!!",
+				"discountedPrice": 40,
+				"price": 45,
+				"thumbnail": "crisps/curly.jpg",
+				"category": "crisps",
+				"id": 61,
+				"title": "Curly crisps 100gm"
 			},
 			{
 				"description": "Healthy juice set of 3 bottles!",
@@ -47,7 +47,7 @@
 				"title": "Mixed Healthy 250ml"
 			},
 			{
-				"description": "Fresh green grapes",
+				"description": "Fresh green grapes!",
 				"discountedPrice": 340,
 				"price": 450,
 				"thumbnail": "fruits/grapes.jpg",
@@ -56,7 +56,16 @@
 				"title": "Grapes 100gm"
 			},
 			{
-				"description": "This is sweet cherry and is very tasty",
+				"description": "Tangy oranges!",
+				"discountedPrice": 280,
+				"price": 290,
+				"thumbnail": "fruits/orange.jpg",
+				"category": "fruits",
+				"id": 27,
+				"title": "Oranges 500gm"
+			},
+			{
+				"description": "Sweet sweet juicy cherries!",
 				"discountedPrice": 45,
 				"price": 60,
 				"thumbnail": "fruits/cherry.jpg",
@@ -65,13 +74,13 @@
 				"title": "Cherry 100gm"
 			},
 			{
-				"description": "Fresh Pomegranate",
+				"description": "Fresh pomegranate!",
 				"discountedPrice": 180,
 				"price": 185,
 				"thumbnail": "fruits/pomegranate.jpg",
 				"category": "fruits",
-				"id": 31,
-				"title": "Pomogranate 500gm"
+				"id": 33,
+				"title": "Pomegranate 500gm"
 			}
 		],
 		"fruits": [
@@ -94,7 +103,7 @@
 				"title": "Banana"
 			},
 			{
-				"description": "This is sweet cherry and is very tasty",
+				"description": "Sweet sweet juicy cherries!",
 				"discountedPrice": 45,
 				"price": 60,
 				"thumbnail": "fruits/cherry.jpg",
@@ -103,7 +112,7 @@
 				"title": "Cherry 100gm"
 			},
 			{
-				"description": "Fresh green grapes",
+				"description": "Fresh green grapes!",
 				"discountedPrice": 340,
 				"price": 450,
 				"thumbnail": "fruits/grapes.jpg",
@@ -121,7 +130,7 @@
 				"title": "Lemon"
 			},
 			{
-				"description": "Juicy Mangoes!!",
+				"description": "Juicy mangoes!!",
 				"discountedPrice": 28,
 				"price": 33,
 				"thumbnail": "fruits/mango.jpg",
@@ -148,36 +157,54 @@
 				"title": "Peaches 500gm"
 			},
 			{
+				"description": "Juicy strawberries!!",
+				"discountedPrice": 240,
+				"price": 230,
+				"thumbnail": "fruits/strawberry.jpg",
+				"category": "fruits",
+				"id": 29,
+				"title": "Strawberries 250gm"
+			},
+			{
+				"description": "The absolute best papaya!",
+				"discountedPrice": 115,
+				"price": 110,
+				"thumbnail": "fruits/papaya.jpg",
+				"category": "fruits",
+				"id": 30,
+				"title": "Papaya"
+			},
+			{
 				"description": "Pears!!",
 				"discountedPrice": 60,
 				"price": 67,
 				"thumbnail": "fruits/pear.jpg",
 				"category": "fruits",
-				"id": 29,
+				"id": 31,
 				"title": "Pear"
 			},
 			{
-				"description": "Fresh Pineapples",
+				"description": "Fresh Pineapples!",
 				"discountedPrice": 90,
 				"price": 102,
 				"thumbnail": "fruits/pineapple.jpg",
 				"category": "fruits",
-				"id": 30,
+				"id": 32,
 				"title": "Pineapple"
 			},
 			{
-				"description": "Fresh Pomegranate",
+				"description": "Fresh pomegranate!",
 				"discountedPrice": 180,
 				"price": 185,
 				"thumbnail": "fruits/pomegranate.jpg",
 				"category": "fruits",
-				"id": 31,
-				"title": "Pomogranate 500gm"
+				"id": 33,
+				"title": "Pomegranate 500gm"
 			}
 		],
 		"cookies": [
 			{
-				"description": "Tasty home made butter cookies!",
+				"description": "Soft and tasty home made butter cookies!",
 				"discountedPrice": 70,
 				"price": 75,
 				"thumbnail": "cookies/butter.jpg",
@@ -186,18 +213,27 @@
 				"title": "Butter Cookies 250gm"
 			},
 			{
-				"description": "Oreos!!",
+				"description": "Creamy chocolatey delightful oreos!",
 				"discountedPrice": 50,
 				"price": 55,
 				"thumbnail": "cookies/oreo.jpg",
 				"category": "cookies",
 				"id": 2,
 				"title": "Oreo Cookies 100gm"
+			},
+			{
+				"description": "Delightful choco chip cookies!",
+				"discountedPrice": 70,
+				"price": 65,
+				"thumbnail": "cookies/chocochip.jpg",
+				"category": "cookies",
+				"id": 3,
+				"title": "Choco Chip Cookies 100gm"
 			}
 		],
 		"crisps": [
 			{
-				"description": "Tangy crisps!!",
+				"description": "Tangy swirly crisps!!",
 				"discountedPrice": 40,
 				"price": 45,
 				"thumbnail": "crisps/curly.jpg",
@@ -251,6 +287,15 @@
 				"category": "desserts",
 				"id": 42,
 				"title": "Ice Cream"
+			},
+			{
+				"description": "Chocolate dipped donuts!",
+				"discountedPrice": 149,
+				"price": 140,
+				"thumbnail": "desserts/donut.jpg",
+				"category": "desserts",
+				"id": 44,
+				"title": "Donuts set of 6"
 			}
 		],
 		"beverages": [
