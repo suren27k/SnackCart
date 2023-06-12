@@ -1,12 +1,12 @@
 import ReactDOM from "react-dom";
 import { Overlay } from "./Loader";
 
-const Modal = ({ onClose, children }) =>
+const Modal = ({ onClose, customClass, children }) =>
 {
 	return ReactDOM.createPortal(
 		<>
 			<Overlay onClose={onClose} />
-			<div className="modal">
+			<div className={`modal ${customClass}`}>
 				<button type="close" onClick={onClose}>
 					<i className="bi bi-x-lg"></i>
 				</button>

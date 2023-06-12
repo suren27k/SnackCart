@@ -6,7 +6,7 @@ const CartItem = ({ index, cartItem, onAddItem, onRemoveItem }) =>
 			<div>{index + 1}</div>
 		</div>
 		<div className="img-wrap">
-			<img className="img-fluid" src={`/assets/${cartItem.thumbnail}`} alt={cartItem.title} />
+			<img className="img-fluid cart-img" src={`/assets/${cartItem.thumbnail}`} alt={cartItem.title} />
 		</div>
 		<div className="information">
 			<div className="item-info">

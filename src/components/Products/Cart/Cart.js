@@ -84,12 +84,12 @@ const Cart = () =>
 			</button>
 			{
 				showModal &&
-				<Modal onClose={handleModalClick}>
+				<Modal onClose={handleModalClick} customClass={"cart-modal"}>
 					<div className="checkout-modal">
-						<h2>Your Cart</h2>
+						<h2>Your Bag</h2>
 						<div className="checkout-modal_list">
 							{cartItems.length === 0 ? (
-								<h3 className="empty-cart">Your cart is empty : /</h3>
+								<h3 className="empty-cart">Your bag is empty : /</h3>
 							)
 								: (cartItems.map((cartItem, index) =>
 								{
@@ -102,7 +102,7 @@ const Cart = () =>
 						{cartItems.length > 0 &&
 							<div className="checkout-modal_footer">
 								<div className="totalAmount">
-									<h4>Total Amount</h4>
+									<h4>Total Amount:</h4>
 									<h4>₹ {totalAmount} </h4>
 								</div>
 								<button onClick={handleOrderWithRequest}>Order Now</button>

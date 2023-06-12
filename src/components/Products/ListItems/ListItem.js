@@ -70,7 +70,7 @@ const ListItem = ({ data }) =>
 
 			</div>
 			{showModal && (
-				<Modal onClose={handleModal}>
+				<Modal onClose={handleModal} customClass={"products-modal"}>
 					<div className="item-card__modal">
 						<div className="img-wrap">
 							<img className={"img-fluid modal-img"} src={`/assets/${data.thumbnail}`} alt={data.title} />

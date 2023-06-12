@@ -41,3 +41,5 @@ to do:
 7. What are CSS overflow? Tip in homescreen is not scrollable in mobile. Fix it for all modals. 
 8. Change cart to bag everywhere
 9. Under 440x width show no of items in bubble over cart icon when bag text hides.
+10. Adjust close button on all modals.
+11. Implement search to some empty page. Add search component for smaller search button.
