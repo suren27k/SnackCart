@@ -78,7 +78,7 @@ const Profile = ({ isAuthDone }) =>
 						});
 						// console.log("orderIdArray: " + orderIdArray);
 
-						setNewName(user.displayName);
+						// setNewName(user.displayName);
 
 						setShowContent(true);
 					}
@@ -161,6 +161,7 @@ const Profile = ({ isAuthDone }) =>
 
 	const editNameAction = () =>
 	{
+		setNewName(user.displayName);
 		setEditNameTrigger(true);
 	}
 
@@ -168,6 +169,11 @@ const Profile = ({ isAuthDone }) =>
 	{
 
 		setNewName(e.target.value)
+	}
+
+	const cancelEditNameRequest = () =>
+	{
+		setEditNameTrigger(false);
 	}
 
 	async function sendEditNameRequest() 
@@ -376,14 +382,15 @@ const Profile = ({ isAuthDone }) =>
 											<h2>Your Personal Information</h2>
 											<div className="display-name">
 												<span className="item-name">Display Name :</span>
+												<span className="item-value">{user.displayName || "Not set yet"}</span>
 												{
 													!editNameTrigger ?
 														(
 															<>
-																<span className="item-value">{user.displayName || "Not set yet"}</span>
 																<span onClick={editNameAction} className="item-action">
-																	<span className="action-divider">|</span>
-																	Edit Name
+																	<span className="divider">| </span>
+																	<span className="action-name">Edit Name</span>
+																	<span className="divider"> |</span>
 																</span>
 															</>
 														)
@@ -401,14 +408,18 @@ const Profile = ({ isAuthDone }) =>
 																	onChange={nameOnChangeAction}></input>
 																{showSpinner ?
 																	<>
-																		<button>Saving..</button><Spinner />
+																		<button className="confirm-button loading-btn">Saving..</button><Spinner />
 																		<Overlay />
 																	</>
 																	:
-																	<button onClick={sendEditNameRequest}>
-																		Save
-																	</button>
-
+																	<>
+																		<button className="confirm-button" onClick={sendEditNameRequest} title="Save">
+																			Save
+																		</button>
+																		<button className="cancel-button" onClick={cancelEditNameRequest} title="Cancel">
+																			Cancel
+																		</button>
+																	</>
 																}
 
 															</span>
@@ -424,17 +435,17 @@ const Profile = ({ isAuthDone }) =>
 													user.emailVerified === "false" &&
 													<>
 														<span onClick={requestEmailVerificationAction} className="item-action">
-															<span className="action-divider">|</span>
-															Request Verification email
+															<span className="divider">| </span>
+															<span className="action-name">Request Verification email</span>
 															{showSpinner2 &&
 																<>
 																	<Spinner />
 																	<Overlay />
 																</>
 															}
-
+															<span className="divider"> |</span>
 														</span>
-														<br></br><span className="action-tip">(You can request verification if you are not using a dummy email)</span>
+														<span className="action-tip">(You can request verification if you are not using a dummy email)</span>
 													</>
 												}
 

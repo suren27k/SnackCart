@@ -1,6 +1,7 @@
 .profile-section {
 	// height: 600px;
 	margin-top: 80px;
+	margin-bottom: 80px;
 
 	hr {
 		border: solid 1px teal;
@@ -8,6 +9,17 @@
 		margin: 15px auto;
 	}
 }
+
+@media (max-width: 880px) {
+	h1 {
+		font-size: 1.6rem;
+	}
+
+	.profile-section {
+		margin-top: 40px;
+	}
+}
+
 .profile-info-container {
 	@include flexCenter;
 	width: 100%;
@@ -16,7 +28,7 @@
 	.info-card {
 		padding: 20px 20px;
 		border: 1px solid teal;
-		// height: 600px;
+		margin: auto 20px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
@@ -31,16 +43,16 @@
 		}
 
 		.item-name {
-			color: white;
-			background-color: teal;
-			font-size: 16px;
+			color: black;
+			background-color: antiquewhite;
+			font-size: 1rem;
 			padding: 3px 10px;
 		}
 
 		.item-value {
 			// text-decoration: none;
 			margin-left: 10px;
-			font-size: 16px;
+			font-size: 1rem;
 		}
 
 		.item-action {
@@ -48,34 +60,44 @@
 			color: teal;
 			cursor: pointer;
 			// float: right;
-			margin: auto 40px;
-
-			.action-divider {
-				margin-right: 10px;
-			}
+			margin-top: 10px;
+			margin-left: 2px;
+			display: block;
 		}
 		.action-tip {
 			margin-top: 5px;
 		}
 
-		.item-action:hover {
+		.action-name:hover {
 			text-decoration: underline;
 		}
 
 		.edit-item {
+			display: block;
+			margin-top: 10px;
 			input {
-				margin: auto 20px;
-				font-size: 16px;
+				margin-right: 20px;
+				font-size: 0.9rem;
 			}
 
 			button {
-				font-size: 16px;
-				background-color: teal;
+				font-size: 0.9rem;
 				border: initial;
 				border-radius: 4px;
-				color: #fff;
 				cursor: pointer;
 				padding: 3px 10px;
+			}
+
+			.confirm-button {
+				background-color: teal;
+				color: #fff;
+			}
+
+			.cancel-button {
+				background-color: #fff;
+				color: teal;
+				border: 0.5px solid teal;
+				margin-left: 10px;
 			}
 		}
 
@@ -112,9 +134,55 @@
 		}
 	}
 }
+@media (max-width: 880px) {
+	.profile-info-container .info-card h2 {
+		font-size: 1.4rem;
+	}
+}
+
+@media (max-width: 400px) {
+	h1 {
+		font-size: 1.4rem;
+	}
+	.profile-info-container .info-card {
+		margin: auto 10px;
+		h2 {
+			font-size: 1.2rem;
+		}
+	}
+
+	.profile-section {
+		margin-top: 20px;
+	}
+	.profile-info-container .info-card .item-name {
+		font-size: 0.875rem;
+		padding: 3px 5px;
+		white-space: nowrap;
+	}
+	.profile-info-container .info-card .item-value {
+		font-size: 0.875rem;
+	}
+	.profile-info-container .info-card .item-action {
+		font-size: 0.875rem;
+	}
+
+	.profile-info-container .info-card .action-tip {
+		font-size: 0.875rem;
+	}
+
+	.profile-info-container .info-card .edit-item {
+		input {
+			width: 30%;
+			font-size: 0.87rem;
+		}
+		button {
+			font-size: 0.87rem;
+		}
+	}
+}
 
 .account-deletion-container {
-	padding: 20px 10px;
+	padding: 10px 10px;
 	.message-container {
 		display: flex;
 
@@ -142,6 +210,10 @@
 		justify-content: center;
 		display: flex;
 		color: red;
+
+		i {
+			font-size: 9rem;
+		}
 	}
 
 	.action-buttons {
@@ -149,7 +221,7 @@
 		margin-top: 20px;
 
 		button {
-			font-size: 16px;
+			font-size: 1rem;
 			border-radius: 4px;
 			cursor: pointer;
 			padding: 8px 10px;
@@ -171,6 +243,112 @@
 			color: #fff;
 			border: initial;
 			margin-right: 0;
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.account-deletion-container {
+		.danger-icon {
+			i {
+				font-size: 8rem;
+			}
+		}
+	}
+}
+@media (max-width: 600px) {
+	.account-deletion-container {
+		.message-container {
+			.message {
+				margin-left: 20px;
+				text-align: center;
+
+				h2 {
+					font-size: 1.3rem;
+				}
+
+				span {
+					font-size: 0.9rem;
+				}
+			}
+		}
+		.danger-icon {
+			i {
+				font-size: 6rem;
+			}
+		}
+		.action-buttons {
+			margin-top: 10px;
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	.account-deletion-container {
+		padding: 5px;
+		.message-container {
+			.message {
+				margin-left: 10px;
+				text-align: center;
+
+				h2 {
+					font-size: 1.1rem;
+				}
+
+				span {
+					font-size: 0.87rem;
+				}
+			}
+		}
+		.danger-icon {
+			i {
+				font-size: 5rem;
+			}
+		}
+
+		.action-buttons {
+			button {
+				font-size: 0.9rem;
+				padding: 6px 8px;
+				margin: 10px 5px;
+			}
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.delete-account__modal {
+		padding: 0.6rem;
+	}
+	.account-deletion-container {
+		padding: 5px;
+		.message-container {
+			flex-direction: column;
+			.message {
+				margin-left: 10px;
+				text-align: center;
+
+				h2 {
+					font-size: 1.1rem;
+				}
+
+				span {
+					font-size: 0.87rem;
+				}
+			}
+		}
+		.danger-icon {
+			i {
+				font-size: 4rem;
+			}
+		}
+
+		.action-buttons {
+			button {
+				font-size: 0.9rem;
+				padding: 6px 8px;
+				margin: 10px 5px;
+			}
 		}
 	}
 }

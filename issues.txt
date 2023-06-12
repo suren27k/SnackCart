@@ -43,3 +43,5 @@ to do:
 9. Under 440x width show no of items in bubble over cart icon when bag text hides.
 10. Adjust close button on all modals.
 11. Implement search to some empty page. Add search component for smaller search button.
+12. Set title attribute for buttons including bag, profile, login, logout etc. and on login page too.
+13. Make login page responsive.

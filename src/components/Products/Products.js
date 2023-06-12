@@ -132,7 +132,7 @@ const Products = () =>
 							<h3>Hello! This is Surendar here.</h3>
 							<p> Here is a brief list of features in this project
 								<br></br>
-								<small>(Psst! App is not yet responsive so please view via a desktop browser.)</small>
+								<small>(Psst! App is not yet fully responsive so please view via a desktop browser.)</small>
 							</p>
 							<h4> The following features are powered by Firebase.</h4>
 							<ul>
