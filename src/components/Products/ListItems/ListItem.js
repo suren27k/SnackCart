@@ -52,7 +52,7 @@ const ListItem = ({ data }) =>
 				{
 					!item || item?.quantity < 1 ? (	//note "?." operator. It does not throw error if quantity property is not present in item. It simply gives undefined.
 						<button className={"cart-add"} onClick={increaseCounterByOne}>
-							<span>Add to Cart</span>
+							<span></span>
 							<img src={AddToCartIcon} alt="Cart Icon" />
 						</button>
 					) : (
@@ -98,8 +98,8 @@ const ListItem = ({ data }) =>
 							<div className="modal-cart-button">
 								{
 									!item || item?.quantity < 1 ? (
-										<button className={"cart-add card-add__modal"} onClick={increaseCounterByOne}>
-											<span>Add to Cart</span>
+										<button className={"card-add__modal"} onClick={increaseCounterByOne}>
+											<span></span>
 											<img src={AddToCartIcon} alt="Cart Icon" />
 										</button>
 									) : (

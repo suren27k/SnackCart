@@ -36,6 +36,12 @@
 	}
 }
 
+@media screen and (max-width: 880px) {
+	.subheader-container {
+		top: 61px;
+	}
+}
+
 @media screen and (max-width: 600px) {
 	//hamburger menu for cetagories
 	// don't do for profile navbar.

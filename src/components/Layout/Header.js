@@ -39,72 +39,61 @@ const Header = () =>
 			<div className="nav-brand">
 				<NavLink to={"/"}>
 					<span>SnackCart</span>
-					<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart" width="30"
-						height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round"
-						strokeLinejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-						<circle cx="6" cy="19" r="2" />
-						<circle cx="17" cy="19" r="2" />
-						<path d="M17 17h-11v-14h-2" />
-						<path d="M6 5l14 1l-1 7h-13" />
-					</svg>
+					<i class="bi bi-cart3"></i>
 				</NavLink>
 			</div>
 			<div className="searchBox-container">
 				<SearchBox />
 			</div>
-			<div className="cart-container">
-				<Cart />
-			</div>
-			{
-				<>
-					{(() =>
-					{
-						if (token === null)
+			<div className="nav-actions">
+				<div className="user-actions cart-container">
+					<Cart />
+				</div>
+				{
+					<>
+						{(() =>
 						{
-							return (
-								<button className="login-btn" onClick={loginAction}>Login</button>
-							)
-						}
-						else if (token !== null && authState && authState.idToken)
-						{
-							return (
-								<>
-									<div className="user-actions">
-										<button onClick={userProfileAction} title="User Profile" className="material-icons">
-											<span>Profile</span>
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
-												<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-												<path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-											</svg>
-										</button>
+							if (token === null)
+							{
+								return (
+									<div className="user-actions login-action">
+										<button onClick={loginAction}>Login</button>
 									</div>
-									<div className="user-actions">
-										<button onClick={logoutAction} title="Logout" className="material-icons">
-											<span>Logout</span>
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-												<path fillRule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
-												<path fillRule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-											</svg>
-										</button>
-									</div>
-								</>
-							)
-						}
-						else if (token === null && !authState && !authState.idToken)
-						{
-							console.log("CALLING expire session from header js if token: " + token)
-							dispatcher(expireSession());
-						}
+								)
+							}
+							else if (token !== null && authState && authState.idToken)
+							{
+								return (
+									<>
+										<div className="user-actions profile-action">
+											<button onClick={userProfileAction} title="User Profile" className="material-icons">
+												<span>Profile</span>
+												<i class="bi bi-person-circle"></i>
+											</button>
+										</div>
+										<div className="user-actions logout-action">
+											<button onClick={logoutAction} title="Logout" className="material-icons">
+												<span>Logout</span>
+												<i class="bi bi-box-arrow-right"></i>
+											</button>
+										</div>
+									</>
+								)
+							}
+							else if (token === null && !authState && !authState.idToken)
+							{
+								console.log("CALLING expire session from header js if token: " + token)
+								dispatcher(expireSession());
+							}
 
-					})()}
+						})()}
 
 
-				</>}
-			{/* <Alert variant={"primary"} show={showAlert} onClose={() => setShowAlert(false)} dismissible>
+					</>}
+				{/* <Alert variant={"primary"} show={showAlert} onClose={() => setShowAlert(false)} dismissible>
 				Logout Success!!
 			</Alert> */}
-			{/* {showAlert &&
+				{/* {showAlert &&
 				ReactDOM.createPortal(
 					<>
 						<Alert variant={"primary"} show={showAlert} onClose={() => setShowAlert(false)} dismissible>
@@ -114,6 +103,8 @@ const Header = () =>
 					document.getElementById("modal-root")
 				)
 			} */}
+			</div>
+
 		</header >
 	)
 }

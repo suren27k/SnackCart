@@ -23,6 +23,13 @@
 
 .modal-img {
 	max-width: 80%;
+	min-width: 115px;
+}
+
+@media (max-width: 522px) {
+	.modal-img {
+		max-width: 65%;
+	}
 }
 
 .item-card {
@@ -102,6 +109,29 @@
 	}
 }
 
+@media (max-width: 910px) {
+	.item-card {
+		h3 {
+			font-size: 1rem;
+		}
+	}
+}
+
+@media (max-width: 522px) {
+	.item-card__modal {
+		flex-direction: column;
+
+		.img-wrap {
+			display: flex;
+			justify-content: center;
+		}
+
+		.modal-cart-button {
+			width: 70%;
+		}
+	}
+}
+
 .pricing {
 	display: flex;
 	justify-content: center;
@@ -137,6 +167,43 @@ button.cart-add {
 
 	&__modal {
 		margin-top: 8px;
+	}
+}
+
+button.card-add__modal {
+	margin-top: 8px;
+	cursor: pointer;
+	width: 100%;
+	background-color: $primary;
+	border-radius: 5px;
+	border: unset;
+	font-size: 1rem;
+	padding: 8px 16px;
+	color: $white;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
+
+	img {
+		margin-left: 10px;
+	}
+}
+
+button.cart-add:before,
+button.card-add__modal:before {
+	content: "Add to Bag";
+}
+
+@media (max-width: 920px) {
+	button.cart-add:before {
+		content: "Add";
+	}
+}
+
+@media (max-width: 655px) {
+	button.card-add__modal:before {
+		content: "Add";
 	}
 }
 

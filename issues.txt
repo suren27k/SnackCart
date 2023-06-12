@@ -39,3 +39,5 @@ to do:
 5. Ine ach scss, create sections like layout, typography, etc..
 6. In HTML, if there are many nested elements, add a comment to closing tags to mention what element that is. Makes it easier to understand.
 7. What are CSS overflow? Tip in homescreen is not scrollable in mobile. Fix it for all modals. 
+8. Change cart to bag everywhere
+9. Under 440x width show no of items in bubble over cart icon when bag text hides.

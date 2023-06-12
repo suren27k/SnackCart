@@ -6,6 +6,7 @@ header {
 	margin: 0;
 	padding: 0 0px;
 	background-color: $header-background-color;
+	// background-color: black;
 	display: flex;
 	justify-content: space-between;
 	box-shadow: 0 15px 10px -15px #1111112b;
@@ -14,8 +15,7 @@ header {
 	top: 0;
 }
 
-.nav-brand,
-.cart-container {
+.nav-brand {
 	a,
 	button {
 		display: flex;
@@ -25,7 +25,7 @@ header {
 		color: white;
 		font-size: 1.8rem;
 
-		svg {
+		i {
 			margin-left: 8px;
 		}
 	}
@@ -35,20 +35,55 @@ header {
 	}
 }
 
+.searchBox-container {
+	align-self: center;
+	// flex-grow: 1;
+	width: 700px;
+
+	form {
+		position: relative;
+		display: flex;
+		// max-width: 100%;
+		// margin: 0 80px;
+		justify-content: center;
+
+		input {
+			flex-grow: 1;
+			padding: 8px 56px 8px 16px;
+			border: transparent;
+			border-radius: 2px;
+			width: 100%;
+			font-size: 1rem;
+			color: rgba(128, 128, 128, 0.897);
+			outline: rgba($color: $header-background-color, $alpha: 0.5);
+			max-width: 500px;
+		}
+
+		button[type="submit"] {
+			background-color: $primary;
+			position: relative;
+			right: 32px;
+			padding-right: 8px !important;
+			padding-left: 8px !important;
+			border: unset;
+			border-top-right-radius: 2px;
+			border-bottom-right-radius: 2px;
+			cursor: pointer;
+		}
+	}
+	div {
+		display: none;
+	}
+}
+
 .cart-container {
 	display: flex;
 
 	a,
 	button {
-		margin: auto;
-		background-color: unset;
-		border: unset;
-		cursor: pointer;
-		font-size: 1.2rem;
-
 		span {
 			&:first-child {
-				padding-right: 8px;
+				// padding-right: 8px;
 
 				&[data-items]::after {
 					position: relative;
@@ -65,93 +100,11 @@ header {
 	}
 }
 
-.searchBox-container {
-	align-self: center;
-	flex-grow: 1;
-
-	form {
-		position: relative;
-		display: flex;
-		max-width: 100%;
-		margin: 0 80px;
-		justify-content: center;
-
-		input {
-			flex-grow: 1;
-			padding: 8px 56px 8px 16px;
-			border: transparent;
-			border-radius: 2px;
-			width: 100%;
-			font-size: 15px;
-			color: rgba(128, 128, 128, 0.897);
-			outline: rgba($color: $header-background-color, $alpha: 0.5);
-			max-width: 500px;
-		}
-
-		button[type="submit"] {
-			background-color: $primary;
-			position: relative;
-			right: 36px;
-			padding-right: 8px !important;
-			padding-left: 8px !important;
-			border: unset;
-			border-top-right-radius: 2px;
-			border-bottom-right-radius: 2px;
-			cursor: pointer;
-		}
-	}
-	form + svg {
-		display: none;
-	}
-}
-
-// Media Queries
-@media screen and (max-width: 768px) {
-	.nav-brand,
-	.cart-container {
-		a,
-		button {
-			font-size: 22px;
-			padding: 14px 16px;
-		}
-	}
-
-	.cart-container {
-		a,
-		button {
-			font-size: 16px;
-		}
-	}
-
-	.searchBox-container {
-		form {
-			margin: 0 0px;
-		}
-	}
-}
-
-@media screen and (max-width: 450px) {
-	.cart-container {
-		a span:first-child,
-		button span:first-child {
-			display: none;
-		}
-	}
-	.searchBox-container {
-		form {
-			display: none;
-		}
-		form + svg {
-			margin-left: auto;
-			display: block;
-		}
-	}
+.nav-actions {
+	display: flex;
 }
 
 .user-actions {
-	display: flex;
-	align-items: center;
-
 	button {
 		color: $white;
 		background-color: unset;
@@ -160,8 +113,10 @@ header {
 		cursor: pointer;
 		font-size: 1.2rem;
 		margin-right: 10px;
-		width: 100%;
 		height: 100%;
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
 	}
 
 	span {
@@ -170,5 +125,70 @@ header {
 
 	&:hover {
 		background-color: rgba($color: $header-background-color, $alpha: 0.5);
+	}
+}
+
+// Media Queries
+@media screen and (max-width: 880px) {
+	.nav-brand {
+		a,
+		button {
+			font-size: 22px;
+			padding: 14px 16px;
+		}
+	}
+
+	.searchBox-container {
+		display: flex;
+		justify-content: end;
+		form {
+			display: none;
+		}
+		div {
+			display: flex;
+			button {
+				font-size: 1rem;
+				height: 61px;
+			}
+		}
+		i {
+			background-color: unset;
+		}
+	}
+
+	.nav-actions {
+		button {
+			font-size: 1rem;
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.searchBox-container {
+		a span:first-child,
+		button span:first-child {
+			display: none;
+		}
+	}
+	.nav-actions {
+		a span:first-child,
+		button span:first-child {
+			display: none;
+		}
+	}
+}
+
+.login-action {
+	display: flex;
+	button {
+		align-self: center;
+		background-color: teal;
+		border: initial;
+		border-radius: 4px;
+		color: #fff;
+		cursor: pointer;
+		margin-right: 12px;
+		padding: 12px 24px;
+		height: 60%;
 	}
 }
