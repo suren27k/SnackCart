@@ -46,3 +46,4 @@ to do:
 12. Set title attribute for buttons including bag, profile, login, logout etc. and on login page too.
 13. Make login page responsive.
 14. Make intro tip responsive.
+15. Footer with link sot github, linkedin and maybe coding profiles.

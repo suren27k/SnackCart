@@ -125,14 +125,14 @@ const Products = () =>
 			{loader && <Loader />}
 			{
 				showModal &&
-				<Modal onClose={handleModalClick}>
+				<Modal customClass={"intro-tip"} onClose={handleModalClick}>
 					<div>
 						<h2>Welcome to my Project!</h2>
 						<div className="tip">
 							<h3>Hello! This is Surendar here.</h3>
 							<p> Here is a brief list of features in this project
-								<br></br>
-								<small>(Psst! App is not yet fully responsive so please view via a desktop browser.)</small>
+								{/* <br></br> */}
+								{/* <small>(Psst! App is not yet fully responsive so please view via a desktop browser.)</small> */}
 							</p>
 							<h4> The following features are powered by Firebase.</h4>
 							<ul>
@@ -141,7 +141,6 @@ const Products = () =>
 								<li>Once an order is placed, you check out the order details in your profile.</li>
 								<li>You can change your name, request email verification and also delete your account permanently from your profile.</li>
 								<li>You can log out and log in anytime using the same credentials. So remember them.</li>
-
 							</ul>
 
 							<p>Please check out the readme file at github <a target="_blank" rel="noreferrer" href="https://github.com/suren27k/snackcart/blob/main/README.md">here</a>.</p>
