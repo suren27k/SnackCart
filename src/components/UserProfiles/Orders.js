@@ -176,35 +176,53 @@ const Orders = ({ isAuthDone }) =>
 														<div className="order-item-info-text">
 															<div className="order-body">
 
-																<p>Order Id: {item.id}</p>
-																<p>Ordered On: {item.orderedOn.day + " " + item.orderedOn.time}</p>
-																<p>Items ordered: {item.items.length}</p>
+																<div className="order-id">
+																	<span className="item-name">Order Id: </span><span className="item-value">{item.id}</span>
+																</div>
+																<div className="order-date">
+																	<span className="item-name">Ordered On:  </span><span className="item-value">{item.orderedOn.day + " " + item.orderedOn.time}</span>
+																</div>
+																<div className="order-quantity">
+																	<span className="item-name">Items ordered:  </span><span className="item-value">{item.items.length}</span>
+																</div>
 															</div>
 															<hr></hr>
 															<div className="order-footer">
 
-																<p>Total Amount: {item.totalAmount}</p>
+																<div><span className="item-name">Total Amount:  </span><span className="item-value">₹ {item.totalAmount}</span></div>
 															</div>
 														</div>
 														<div className="order-item-info-img">
+															<span className="items-ordered__text">Items Ordered</span>
 															<div className="row">
+
 																<div className="column">
 																	<img alt="item-image1" className="img-fluid" src={`/assets/${item.items[0].thumbnail}`} />
 																</div>
-																<div className="column">
-																	<img alt="item-image2" className="img-fluid" src={`/assets/${item.items[1].thumbnail}`} />
-																</div>
+																{item.items.length > 1 &&
+																	<div className="column">
+																		<img alt="item-image2" className="img-fluid" src={`/assets/${item.items[1].thumbnail}`} />
+																	</div>
+
+																}
+																{item.items.length > 2 &&
+																	<div className="column">
+																		<img alt="item-image2" className="img-fluid" src={`/assets/${item.items[2].thumbnail}`} />
+																	</div>
+
+																}
+
 
 															</div>
-															{item.items.length > 2 &&
+															{item.items.length > 3 &&
 																<div className="order-item-info-quantity">
-																	<p>+{item.items.length - 2} more</p>
+																	<span>+{item.items.length - 3} more</span>
 																</div>
 															}
 														</div>
 													</div>
 													<div className="order-item-link">
-														<button onClick={viewOrderAction}>View</button>
+														<button onClick={viewOrderAction}>View All</button>
 													</div>
 												</li>
 											);

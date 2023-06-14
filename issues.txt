@@ -45,3 +45,4 @@ to do:
 11. Implement search to some empty page. Add search component for smaller search button.
 12. Set title attribute for buttons including bag, profile, login, logout etc. and on login page too.
 13. Make login page responsive.
+14. Make intro tip responsive.

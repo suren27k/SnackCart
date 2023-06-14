@@ -129,7 +129,7 @@ header {
 }
 
 // Media Queries
-@media screen and (max-width: 880px) {
+@media (max-width: 880px) {
 	.nav-brand {
 		a,
 		button {
@@ -163,7 +163,7 @@ header {
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
 	.searchBox-container {
 		a span:first-child,
 		button span:first-child {
@@ -190,5 +190,37 @@ header {
 		margin-right: 12px;
 		padding: 12px 24px;
 		height: 60%;
+	}
+}
+
+@media (max-width: 400px) {
+	.nav-brand {
+		display: flex;
+		a,
+		button {
+			font-size: 18px;
+			padding: 10px 12px;
+		}
+	}
+	.searchBox-container {
+		.user-actions {
+			button {
+				margin: 0 5px;
+			}
+		}
+	}
+
+	.nav-actions {
+		.user-actions {
+			button {
+				margin: 0 5px;
+			}
+		}
+		.login-action {
+			button {
+				padding: 6px 12px;
+				font-size: 0.9rem;
+			}
+		}
 	}
 }

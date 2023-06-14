@@ -39,7 +39,7 @@ const Header = () =>
 			<div className="nav-brand">
 				<NavLink to={"/"}>
 					<span>SnackCart</span>
-					<i class="bi bi-cart3"></i>
+					<i className="bi bi-cart3"></i>
 				</NavLink>
 			</div>
 			<div className="searchBox-container">
@@ -68,13 +68,13 @@ const Header = () =>
 										<div className="user-actions profile-action">
 											<button onClick={userProfileAction} title="User Profile" className="material-icons">
 												<span>Profile</span>
-												<i class="bi bi-person-circle"></i>
+												<i className="bi bi-person-circle"></i>
 											</button>
 										</div>
 										<div className="user-actions logout-action">
 											<button onClick={logoutAction} title="Logout" className="material-icons">
 												<span>Logout</span>
-												<i class="bi bi-box-arrow-right"></i>
+												<i className="bi bi-box-arrow-right"></i>
 											</button>
 										</div>
 									</>

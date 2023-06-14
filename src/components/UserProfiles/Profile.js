@@ -459,7 +459,7 @@ const Profile = ({ isAuthDone }) =>
 											<div><span className="item-name">Password updated at : </span> <span className="item-value">{user.passwordUpdatedAt}</span></div>
 											<div><span className="item-name">Profile creation time : </span> <span className="item-value">{user.createdDate}</span></div>
 											<div onClick={deleteAccountAction} className="delete-account">
-												<p>Delete Account</p>
+												<span>Delete Account</span>
 											</div>
 
 										</div>

@@ -80,7 +80,7 @@ const Cart = () =>
 		<>
 			<button onClick={handleModalClick}>
 				<span data-items={cartItems.length}>Bag</span>
-				<i class="bi bi-bag"></i>
+				<i className="bi bi-bag"></i>
 			</button>
 			{
 				showModal &&

@@ -37,13 +37,13 @@ const SearchBox = () =>
 					onChange={handleSearchInput}
 				/>
 				<button type="submit">
-					<i class="bi bi-search"></i>
+					<i className="bi bi-search"></i>
 				</button>
 			</form>
 			<div className="user-actions search">
 				<button>
 					<span>Search</span>
-					<i class="bi bi-search"></i>
+					<i className="bi bi-search"></i>
 				</button>
 			</div>
 
